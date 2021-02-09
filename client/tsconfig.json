@@ -24,5 +24,6 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true
-  }
+  },
+  "include": ["src"]
 }
