@@ -20,5 +20,10 @@ const GlobalStyle = createGlobalStyle`
         color:inherit;
         text-decoration:none;
     }
+
+    button, input, textarea, p{
+        border:none;
+        outline:none;
+    }
 `
 export default GlobalStyle
