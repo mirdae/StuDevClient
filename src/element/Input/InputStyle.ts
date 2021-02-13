@@ -17,7 +17,7 @@ export const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  span {
+  svg {
     color: ${PALETTE.INPUT_TEXT};
   }
 `
@@ -27,4 +27,7 @@ export const Input = styled.input`
   font-weight: 500;
   font-size: 14px;
   color: ${PALETTE.INPUT_TEXT};
+  &::placeholder {
+    color: ${PALETTE.INPUT_TEXT};
+  }
 `
