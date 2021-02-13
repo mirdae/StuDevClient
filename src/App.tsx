@@ -1,3 +1,8 @@
 import React from 'react'
+import AppRouter from './routes'
 
-export const App: React.FC<{}> = () => <h1>dhihi</h1>
+export const App: React.FC<{}> = () => (
+  <>
+    <AppRouter />
+  </>
+)
