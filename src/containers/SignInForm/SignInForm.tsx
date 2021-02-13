@@ -9,10 +9,10 @@ function SignInForm() {
 
   return (
     <S.Container>
-      <Input placeHolder="아이디" icon="dd" />
-      <Input placeHolder="비밀번호" icon="dd" />
+      <Input placeHolder="아이디" icon="assignment_ind" />
+      <Input placeHolder="비밀번호" icon="lock" />
       <Button text="로그인" handleClick={handleSignIn} type="submit" />
-      <Link to="/sign-in">회원가입</Link>
+      <Link to="/sign-up">회원가입</Link>
     </S.Container>
   )
 }

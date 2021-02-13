@@ -14,6 +14,12 @@ export const Icon = styled.div`
   height: 50px;
   width: 67px;
   border-right: 1px solid ${PALETTE.INPUT_BORDER};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    color: ${PALETTE.INPUT_TEXT};
+  }
 `
 export const Input = styled.input`
   box-sizing: border-box;

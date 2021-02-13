@@ -10,7 +10,7 @@ function Input(props: InputProps) {
   return (
     <S.Container>
       <S.Icon>
-        <img src={props.icon} />
+        <span className="material-icons-outlined">{props.icon}</span>
       </S.Icon>
       <S.Input placeholder={props.placeHolder}></S.Input>
     </S.Container>
