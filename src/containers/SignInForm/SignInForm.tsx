@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { requestSignIn } from '../../modules/user/actions'
 import * as S from './SignInFormStyle'
 import { Input } from '../../element/Input/index'
 import { Button } from '../../element/Button'
@@ -7,9 +9,13 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
 function SignInForm() {
+  const dispatch = useDispatch()
   const [socialId, setSocialId] = useState('')
   const [password, setPassword] = useState('')
-  const handleSignIn = () => {}
+
+  const handleSignIn = () => {
+    dispatch(requestSignIn({ socialId, password }))
+  }
 
   return (
     <S.Container>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import * as S from './SignUpFormStyle'
 import { Input } from '../../element/Input/index'
 import { Button } from '../../element/Button'
@@ -6,16 +7,20 @@ import { Link } from 'react-router-dom'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined'
+import { requestSignUp } from '../../modules/user'
 
 function SignUpForm() {
+  const dispatch = useDispatch()
   const [socialId, setSocialId] = useState('')
   const [password, setPassword] = useState('')
   const [checkPassword, setCheckPassword] = useState('')
   const [email, setEmail] = useState('')
   const [nickname, setNickname] = useState('')
 
+  const SocialIdDuplicateCheck = () => {}
   const handleSignUp = () => {
     console.log({ socialId, password, email, nickname })
+    dispatch(requestSignUp({ socialId, password, email, nickname }))
   }
 
   return (
