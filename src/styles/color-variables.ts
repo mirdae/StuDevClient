@@ -11,7 +11,7 @@ const PALETTE: Palette = {
   POINT: '#F27C0F',
   WHITE: '#ffffff',
   INPUT_BORDER: '#E8E8E8',
-  INPUT_TEXT: '#CDCDCD',
+  INPUT_TEXT: '#c1c1c1',
 }
 
 export default PALETTE
