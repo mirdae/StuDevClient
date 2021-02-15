@@ -3,14 +3,13 @@ import PALETTE from '../../styles/color-variables'
 import { BOX_STYLE } from '../../styles/common-style'
 
 export const Container = styled.div`
-  width: 50%;
-  min-height: 60vh;
+  width: 40%;
   background-color: ${PALETTE.WHITE};
-  margin-top: 10vh;
+  margin-top: 15vh;
   border-radius: ${BOX_STYLE.RADIUS};
   box-shadow: ${BOX_STYLE.SHADOW};
   box-sizing: border-box;
-  padding-top: 40px;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
