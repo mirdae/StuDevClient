@@ -11,9 +11,13 @@ export function userReducer(
   action: UserAction
 ): UserState {
   switch (action.type) {
-    case AT.REQUEST_GET_USER_INFO_SUCCESS:
+    case AT.REQUEST_SIGN_UP_SUCCESS:
       return { ...state }
-    case AT.REQUEST_GET_USER_INFO_ERROR:
+    case AT.REQUEST_SIGN_UP_ERROR:
+      return { ...state }
+    case AT.REQUEST_SIGN_IN_SUCCESS:
+      return { ...state }
+    case AT.REQUEST_SIGN_IN_ERROR:
       return { ...state }
     default:
       return { ...state }
