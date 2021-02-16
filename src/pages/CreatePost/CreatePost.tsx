@@ -1,8 +1,9 @@
 import React from 'react'
 import * as S from './CreatePostStyle'
 import { Header } from '../../components/Header'
-import { CreateForm } from '../../components/CreateForm'
-import { Options } from '../../components/Options'
+import { CreateForm } from '../../containers/CreateForm'
+import { Options } from '../../containers/Options'
+import { CreatePostButton } from '../../containers/CreatePostButton'
 
 function CreatePost() {
   return (
@@ -12,6 +13,7 @@ function CreatePost() {
         <CreateForm />
         <Options />
       </S.ContentBox>
+      <CreatePostButton />
     </S.Container>
   )
 }

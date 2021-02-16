@@ -12,5 +12,6 @@ export const ContentBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  margin: 7vh 0;
 `
