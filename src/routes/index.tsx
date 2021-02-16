@@ -4,6 +4,7 @@ import { Main } from '../pages/Main'
 import { SignUp } from '../pages/SignUp'
 import { SignIn } from '../pages/SignIn'
 import { CreatePost } from '../pages/CreatePost'
+import { Post } from '../pages/Post'
 
 function AppRouter() {
   return (
@@ -12,6 +13,7 @@ function AppRouter() {
       <Route path="/sign-up" component={SignUp} />
       <Route path="/sign-in" component={SignIn} />
       <Route path="/create" component={CreatePost} />
+      <Route path="/post" component={Post} />
     </Switch>
   )
 }
