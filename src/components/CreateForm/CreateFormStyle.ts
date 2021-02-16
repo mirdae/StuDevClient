@@ -5,6 +5,9 @@ export const Container = styled.div`
   width: 40%;
   padding: 30px;
   border-right: 1px solid ${PALETTE.INPUT_BORDER};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const TitleInput = styled.input`
