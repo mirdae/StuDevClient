@@ -35,7 +35,7 @@ function SignInForm() {
       >
         <LockOutlinedIcon />
       </Input>
-      <Button text="로그인" handleClick={handleSignIn} type="submit" />
+      <Button text="로그인" handleClick={handleSignIn} buttonType="submit" />
       <Link to="/sign-up">회원가입</Link>
     </S.Container>
   )

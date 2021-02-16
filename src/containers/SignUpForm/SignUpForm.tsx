@@ -65,7 +65,7 @@ function SignUpForm() {
       >
         <AccountCircleOutlinedIcon />
       </Input>
-      <Button text="회원가입" handleClick={handleSignUp} type="submit" />
+      <Button text="회원가입" handleClick={handleSignUp} buttonType="submit" />
       <Link to="/sign-in">로그인</Link>
     </S.Container>
   )
