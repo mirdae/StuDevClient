@@ -8,7 +8,7 @@ export const Container = styled.button<ButtonProps>`
   padding: 0 50px;
   height: 50px;
   border-radius: 50px;
-  font-size: 15px;
+  font-size: 0.8rem;
   margin: 20px 10px;
   cursor: pointer;
   ${(props) =>
