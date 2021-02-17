@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, SyntheticEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './OptionsStyle'
 import { CheckBox } from '../../element/CheckBox'
 import CategoryIcon from '@material-ui/icons/Category'
 import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom'
-import { changePostTopic, changePostOnOff } from '../../modules/post'
+import {
+  changePostTopic,
+  changePostOnOff,
+  changePostParticipantCountLimit,
+} from '../../modules/post'
 
 const topics = [
   '백엔드',
@@ -21,6 +25,14 @@ function Options() {
   const dispatch = useDispatch()
   const [selectedTopics, setSelectedTopics] = useState<string[]>([])
   const [selectedOnOff, setSelectedOnOff] = useState<string[]>([])
+  const [participantCount, setParticipantCount] = useState()
+
+  const handleInput = ({ target: { value } }: any) => {
+    if (isNaN(value)) {
+    }
+    setParticipantCount(value)
+    dispatch(changePostParticipantCountLimit(parseInt(value)))
+  }
 
   const addTopics = (e: any) => {
     const topic = e.target.innerText
@@ -71,7 +83,7 @@ function Options() {
           <span>모임인원</span>
         </S.Icon>
         <S.Participant>
-          <input type="text" />
+          <input type="text" value={participantCount} onChange={handleInput} />
           <span>명</span>
         </S.Participant>
       </S.OptionBox>
