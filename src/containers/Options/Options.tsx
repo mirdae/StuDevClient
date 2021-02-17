@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import * as S from './OptionsStyle'
 import { CheckBox } from '../../element/CheckBox'
 import CategoryIcon from '@material-ui/icons/Category'
 import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom'
+import { changePostTopic } from '../../modules/post'
 
 const topics = [
   '백엔드',
@@ -16,17 +18,20 @@ const topics = [
 const onOff = ['온라인', '오프라인']
 
 function Options() {
+  const dispatch = useDispatch()
   const [selectedTopics, setSelectedTopics] = useState<string[]>([])
   const [selectedOnOff, setSelectedOnOff] = useState<string[]>([])
 
   const addTopics = (e: any) => {
     const topic = e.target.innerText
+    let processedArr: string[]
     if (selectedTopics.includes(topic)) {
-      const filteredArr = selectedTopics.filter((each) => each !== topic)
-      setSelectedTopics(filteredArr)
+      processedArr = selectedTopics.filter((each) => each !== topic)
     } else {
-      setSelectedTopics([...selectedTopics, topic])
+      processedArr = [...selectedTopics, topic]
     }
+    setSelectedTopics(processedArr)
+    dispatch(changePostTopic(processedArr.join(',')))
   }
 
   const addOnOff = (e: any) => {
