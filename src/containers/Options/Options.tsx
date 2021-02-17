@@ -5,7 +5,7 @@ import { CheckBox } from '../../element/CheckBox'
 import CategoryIcon from '@material-ui/icons/Category'
 import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom'
-import { changePostTopic } from '../../modules/post'
+import { changePostTopic, changePostOnOff } from '../../modules/post'
 
 const topics = [
   '백엔드',
@@ -36,12 +36,15 @@ function Options() {
 
   const addOnOff = (e: any) => {
     const type = e.target.innerText
+    let processedArr: string[]
+
     if (selectedOnOff.includes(type)) {
-      const filteredArr = selectedOnOff.filter((each) => each !== type)
-      setSelectedOnOff(filteredArr)
+      processedArr = selectedOnOff.filter((each) => each !== type)
     } else {
-      setSelectedOnOff([...selectedOnOff, type])
+      processedArr = [...selectedOnOff, type]
     }
+    setSelectedOnOff(processedArr)
+    dispatch(changePostOnOff(processedArr.join(',')))
   }
 
   return (
