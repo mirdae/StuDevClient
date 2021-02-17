@@ -48,7 +48,7 @@ export const Participant = styled.div`
   input {
     width: 50%;
     border-radius: 20px;
-    padding: 10px;
+    padding: 5px 10px;
     text-align: center;
   }
   span {
