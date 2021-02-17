@@ -1,20 +1,16 @@
-import { PostAction, PostState } from './types'
+import { PostAction, PostState, PostStateArr } from './types'
 import AT from './actionTypes'
 
-const initialState: PostState = {
+const initialCreatPostState: PostState = {
   title: '',
   content: '',
   topic_category: '',
   on_off_category: '',
   participant_count_limit: 0,
-  participant_count: 0,
-  created_at: '',
-  updated_at: '',
-  views: 0,
 }
 
-export function postReducer(
-  state: PostState = initialState,
+export function createPostReducer(
+  state: PostState = initialCreatPostState,
   action: PostAction
 ): PostState {
   switch (action.type) {
@@ -34,5 +30,31 @@ export function postReducer(
       return { ...state, participant_count_limit: action.payload }
     default:
       return { ...state }
+  }
+}
+
+const initialPostState: PostStateArr = {
+  posts: [
+    {
+      title: '',
+      content: '',
+      topic_category: '',
+      on_off_category: '',
+      participant_count_limit: 0,
+      participant_count: 0,
+      created_at: '',
+      updated_at: '',
+      views: 0,
+    },
+  ],
+}
+
+export function postReducer(
+  state: PostStateArr = initialPostState,
+  action: PostAction
+): PostStateArr {
+  switch (action.type) {
+    default:
+      return state
   }
 }

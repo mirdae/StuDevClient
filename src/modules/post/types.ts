@@ -14,8 +14,12 @@ export type PostState = {
   topic_category: string
   on_off_category: string
   participant_count_limit: number
-  participant_count: number
-  created_at: string
+  participant_count?: number
+  created_at?: string
   updated_at?: string
-  views: number
+  views?: number
+}
+
+export type PostStateArr = {
+  posts: PostState[]
 }
