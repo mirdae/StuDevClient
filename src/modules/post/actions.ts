@@ -21,7 +21,7 @@ export const changePostOnOff = (postInfo: string) => ({
   type: AT.CHANGE_POST_ON_OFF,
   payload: postInfo,
 })
-export const changePostParticipantCountLimit = (postInfo: string) => ({
+export const changePostParticipantCountLimit = (postInfo: number) => ({
   type: AT.CHANGE_POST_PARTICIPANT_COUNT_LIMIT,
   payload: postInfo,
 })
