@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import * as S from './HeaderStyle'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined'
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined'
 
 type HeaderProps = {
   isAuth: boolean
@@ -21,7 +22,13 @@ function Header(props: HeaderProps) {
           <input type="text" placeholder="검색어를 입력하세요" />
         </S.Input>
       )}
-      {props.isAuth && (
+      {props.isAuth ? (
+        <Link to="/create">
+          <S.Menu>
+            <AddCircleOutlineOutlinedIcon />
+          </S.Menu>
+        </Link>
+      ) : (
         <Link to="/sign-in">
           <S.Menu>Sign In</S.Menu>
         </Link>
