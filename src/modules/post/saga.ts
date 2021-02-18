@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 import AT from './actionTypes'
-import { CreatePostAction, PostAction } from './types'
+import { CreatePostAction, PostAction, PostDetailAction } from './types'
 import API from '../../api'
 
 function* createPostSaga({ payload }: CreatePostAction) {
@@ -35,7 +35,26 @@ function* getAllPostsSaga({ payload }: PostAction) {
     })
   }
 }
+
+function* getPostDetailSaga({ payload }: PostDetailAction) {
+  try {
+    const { post } = yield call(API.Post.getPostDetail, payload)
+    console.log(post)
+    yield put({
+      type: AT.REQUEST_GET_POST_DETAIL_SUCCESS,
+      payload: post,
+    })
+  } catch (error) {
+    yield put({
+      type: AT.REQUEST_GET_POST_DETAIL_ERROR,
+      payload: error,
+      error: true,
+    })
+  }
+}
+
 export function* postSaga() {
   yield takeLatest(AT.REQUEST_CREATE_POST, createPostSaga)
   yield takeLatest(AT.REQUEST_GET_ALL_POSTS, getAllPostsSaga)
+  yield takeLatest(AT.REQUEST_GET_POST_DETAIL, getPostDetailSaga)
 }

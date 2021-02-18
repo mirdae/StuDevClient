@@ -2,7 +2,7 @@ import { UserAction, UserState } from './types'
 import AT from './actionTypes'
 
 const initialState: UserState = {
-  social_id: '',
+  socialId: '',
   nickname: '',
 }
 

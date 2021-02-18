@@ -2,12 +2,18 @@ import { combineReducers } from 'redux'
 import { all } from 'redux-saga/effects'
 import { userReducer } from './user/reducer'
 import { userSaga } from './user/saga'
-import { postReducer, createPostReducer, postSaga } from './post'
+import {
+  postReducer,
+  createPostReducer,
+  postDetailReducer,
+  postSaga,
+} from './post'
 
 const rootReducer = combineReducers({
   userReducer,
   postReducer,
   createPostReducer,
+  postDetailReducer,
 })
 
 export function* rootSaga() {

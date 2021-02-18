@@ -2,13 +2,24 @@ import * as actions from './actions'
 
 export type UserAction =
   | ReturnType<typeof actions.requestUserInfo>
+  | ReturnType<typeof actions.requestUserInfoSuccess>
+  | ReturnType<typeof actions.requestUserInfoError>
   | ReturnType<typeof actions.requestSignUp>
+  | ReturnType<typeof actions.requestSignUpSuccess>
+  | ReturnType<typeof actions.requestSignUpError>
   | ReturnType<typeof actions.requestSignIn>
+  | ReturnType<typeof actions.requestSignInSuccess>
+  | ReturnType<typeof actions.requestSignInError>
   | ReturnType<typeof actions.requestEditUserInfo>
+  | ReturnType<typeof actions.requestEditUserInfoSuccess>
+  | ReturnType<typeof actions.requestEditUserInfoError>
   | ReturnType<typeof actions.requestLogout>
+  | ReturnType<typeof actions.requestLogoutSuccess>
+  | ReturnType<typeof actions.requestLogoutError>
 
 export type UserState = {
-  social_id: string
+  socialId: string
   nickname: string
   password?: string
+  email?: string
 }

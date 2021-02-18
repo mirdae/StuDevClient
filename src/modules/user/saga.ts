@@ -1,6 +1,5 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 import AT from './actionTypes'
-import { UserAction } from './types'
 import API from '../../api'
 
 function* signUpSaga({ payload }: any) {
