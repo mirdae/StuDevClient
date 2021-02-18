@@ -6,33 +6,35 @@ import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOut
 
 type HeaderProps = {
   isAuth: boolean
-  showMenu: boolean
   isMain: boolean
+  isSignPage: boolean
 }
 
-function Header(props: HeaderProps) {
+function Header({ isMain, isAuth, isSignPage }: HeaderProps) {
+  console.log('isAuth', isAuth)
   return (
     <S.Container>
       <Link to="/">
         <S.Logo>StuDev</S.Logo>
       </Link>
-      {props.isMain && (
+      {isMain && (
         <S.Input>
           <SearchOutlinedIcon />
           <input type="text" placeholder="검색어를 입력하세요" />
         </S.Input>
       )}
-      {props.isAuth ? (
-        <Link to="/create">
-          <S.Menu>
-            <AddCircleOutlineOutlinedIcon />
-          </S.Menu>
-        </Link>
-      ) : (
-        <Link to="/sign-in">
-          <S.Menu>Sign In</S.Menu>
-        </Link>
-      )}
+      {!isSignPage &&
+        (isAuth ? (
+          <Link to="/create">
+            <S.Menu>
+              <AddCircleOutlineOutlinedIcon />
+            </S.Menu>
+          </Link>
+        ) : (
+          <Link to="/sign-in">
+            <S.Menu>Sign In</S.Menu>
+          </Link>
+        ))}
     </S.Container>
   )
 }

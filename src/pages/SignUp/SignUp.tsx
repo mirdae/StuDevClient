@@ -6,7 +6,7 @@ import { Header } from '../../components/Header'
 function SignUp() {
   return (
     <S.Container>
-      <Header />
+      <Header isAuth={false} isMain={false} isSignPage={true} />
       <SignUpForm></SignUpForm>
     </S.Container>
   )

@@ -8,14 +8,14 @@ import { CardList } from '../../components/CardList'
 
 function Main() {
   const dispatch = useDispatch()
-  const [cookies, a, b] = useCookies(['auth'])
+  const [cookies, _, __] = useCookies(['auth'])
   useEffect(() => {
     dispatch(requestGetAllPosts())
   }, [])
 
   return (
     <S.Container>
-      <Header isAuth={!!cookies.auth} showMenu={true} isMain={true}></Header>
+      <Header isAuth={!!cookies.auth} isMain={true} isSignPage={false} />
       <CardList />
     </S.Container>
   )

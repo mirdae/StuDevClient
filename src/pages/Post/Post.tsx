@@ -1,22 +1,42 @@
 import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 import * as S from './PostStyle'
 import { Header } from '../../components/Header'
 import { PostContent } from '../../containers/PostContent'
 import { Options } from '../../containers/Options'
 import { PostButton } from '../../containers/PostButton'
+import { requestGetPostDetail } from '../../modules/post'
 
-function Post() {
+function Post(props: any) {
+  const dispatch = useDispatch()
+
+  const [cookies, _, __] = useCookies(['auth'])
+  const {
+    topic_category,
+    on_off_category,
+    participant_count_limit,
+    participant_count,
+  } = useSelector((state) => state.postDetailReducer)
+
   useEffect(() => {
-    console.log(123)
-  })
+    dispatch(requestGetPostDetail(props.match.params.id))
+  }, [])
 
   return (
     <S.Container>
-      <Header />
+      <Header isAuth={!!cookies.auth} isMain={false} isSignPage={false} />
       <S.ContentBox>
         <PostContent />
         <S.RightMenu>
-          <Options />
+          <Options
+            type="read"
+            topics={topic_category.split(',')}
+            onOff={on_off_category.split(',')}
+            participant_count_limit={participant_count_limit}
+            participant_count={participant_count}
+          />
           <PostButton />
         </S.RightMenu>
       </S.ContentBox>
@@ -24,4 +44,4 @@ function Post() {
   )
 }
 
-export default Post
+export default withRouter(Post)
