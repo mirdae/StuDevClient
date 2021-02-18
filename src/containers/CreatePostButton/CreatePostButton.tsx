@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as S from './CreatePostButtonStyle'
 import { Button } from '../../element/Button'
+import { requestCreatePost } from '../../modules/post'
 
 function CreatePostButton() {
-  const handleCreatePost = () => {}
+  const dispatch = useDispatch()
+  const postInfo = useSelector((state) => state.createPostReducer)
+
+  const handleCreatePost = () => {
+    dispatch(requestCreatePost(postInfo))
+  }
   return (
     <S.Container>
       <Link to="/">
