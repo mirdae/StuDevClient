@@ -8,6 +8,11 @@ type Post = {
   participant_count_limit: number
 }
 
+const getAllPosts = async () => {
+  const { data } = await api.get('/post')
+  return data
+}
+
 const createPost = async (postInfo: Post) => {
   const { data } = await api.post('/post', postInfo)
   return data
@@ -15,4 +20,5 @@ const createPost = async (postInfo: Post) => {
 
 export default {
   createPost,
+  getAllPosts,
 }
