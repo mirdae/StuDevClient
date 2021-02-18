@@ -18,7 +18,12 @@ const createPost = async (postInfo: Post) => {
   return data
 }
 
+const getPostDetail = async (postId: number) => {
+  const { data } = await api.get(`/post/${postId}`)
+  return data
+}
 export default {
   createPost,
   getAllPosts,
+  getPostDetail,
 }
