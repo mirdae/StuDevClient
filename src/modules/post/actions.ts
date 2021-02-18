@@ -1,4 +1,5 @@
 import AT from './actionTypes'
+import { PostStateArr } from './types'
 
 export const requestCreatePost = (postInfo: any) => ({
   type: AT.REQUEST_CREATE_POST,
@@ -24,4 +25,9 @@ export const changePostOnOff = (postInfo: string) => ({
 export const changePostParticipantCountLimit = (postInfo: number) => ({
   type: AT.CHANGE_POST_PARTICIPANT_COUNT_LIMIT,
   payload: postInfo,
+})
+
+export const requestGetAllPosts = () => ({
+  type: AT.REQUEST_GET_ALL_POSTS,
+  payload: [],
 })

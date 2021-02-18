@@ -1,4 +1,4 @@
-import { PostAction, PostState, PostStateArr } from './types'
+import { CreatePostAction, PostAction, PostState, PostStateArr } from './types'
 import AT from './actionTypes'
 
 const initialCreatPostState: PostState = {
@@ -11,7 +11,7 @@ const initialCreatPostState: PostState = {
 
 export function createPostReducer(
   state: PostState = initialCreatPostState,
-  action: PostAction
+  action: CreatePostAction
 ): PostState {
   switch (action.type) {
     case AT.REQUEST_CREATE_POST_SUCCESS:
@@ -54,6 +54,10 @@ export function postReducer(
   action: PostAction
 ): PostStateArr {
   switch (action.type) {
+    case AT.REQUEST_GET_ALL_POSTS_SUCCESS:
+      return { posts: [...action.payload] }
+    case AT.REQUEST_GET_ALL_POSTS_ERROR:
+      return { ...state }
     default:
       return state
   }

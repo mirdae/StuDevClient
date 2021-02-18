@@ -1,6 +1,6 @@
 import * as actions from './actions'
 
-export type PostAction =
+export type CreatePostAction =
   | ReturnType<typeof actions.requestCreatePost>
   | ReturnType<typeof actions.changePostTitle>
   | ReturnType<typeof actions.changePostContent>
@@ -8,7 +8,10 @@ export type PostAction =
   | ReturnType<typeof actions.changePostTopic>
   | ReturnType<typeof actions.changePostParticipantCountLimit>
 
+export type PostAction = ReturnType<typeof actions.requestGetAllPosts>
+
 export type PostState = {
+  id?: number
   title: string
   content: string
   topic_category: string
