@@ -21,7 +21,6 @@ function* signUpSaga({ payload }: any) {
 function* signInSaga({ payload }: any) {
   try {
     const data = yield call(API.User.signIn, payload)
-    console.log(data)
     yield put({
       type: AT.REQUEST_SIGN_IN_SUCCESS,
       payload: data,

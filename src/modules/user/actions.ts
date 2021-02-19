@@ -19,12 +19,14 @@ export const requestSignUp = (userInfo: UserState) => ({
   payload: userInfo,
 })
 
-export const requestSignUpSuccess = () => ({
+export const requestSignUpSuccess = (userInfo: any) => ({
   type: AT.REQUEST_SIGN_UP_SUCCESS,
+  payload: userInfo,
 })
 
-export const requestSignUpError = () => ({
+export const requestSignUpError = (userInfo: any) => ({
   type: AT.REQUEST_SIGN_UP_ERROR,
+  payload: userInfo,
 })
 
 //requestSignIn

@@ -16,7 +16,12 @@ export function userReducer(
     case AT.REQUEST_SIGN_UP_ERROR:
       return { ...state }
     case AT.REQUEST_SIGN_IN_SUCCESS:
-      return { ...state }
+      console.log(action)
+      return {
+        ...state,
+        socialId: action.payload.user.social_id,
+        nickname: action.payload.user.nickname,
+      }
     case AT.REQUEST_SIGN_IN_ERROR:
       return { ...state }
     default:

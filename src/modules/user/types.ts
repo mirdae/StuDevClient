@@ -1,6 +1,6 @@
 import * as actions from './actions'
 
-export type UserAction =
+export type UserActions =
   | ReturnType<typeof actions.requestUserInfo>
   | ReturnType<typeof actions.requestUserInfoSuccess>
   | ReturnType<typeof actions.requestUserInfoError>
@@ -16,6 +16,12 @@ export type UserAction =
   | ReturnType<typeof actions.requestLogout>
   | ReturnType<typeof actions.requestLogoutSuccess>
   | ReturnType<typeof actions.requestLogoutError>
+
+export type UserAction =
+  | ReturnType<typeof actions.requestSignInSuccess>
+  | ReturnType<typeof actions.requestSignInError>
+  | ReturnType<typeof actions.requestSignUpSuccess>
+  | ReturnType<typeof actions.requestSignUpError>
 
 export type UserState = {
   socialId: string
