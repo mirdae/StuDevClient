@@ -39,8 +39,11 @@ export const Input = styled.div`
 
 export const Menu = styled.div`
   position: fixed;
-  top: 18px;
+  height: 60px;
+  display: flex;
+  align-items: center;
   right: 50px;
+  top: 0;
   font-size: 1rem;
   width: 5vw;
   color: ${PALETTE.POINT};

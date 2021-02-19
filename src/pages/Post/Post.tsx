@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import * as S from './PostStyle'
 import { Header } from '../../components/Header'
-import { PostContent } from '../../containers/PostContent'
+import { ViewContent } from '../../containers/ViewContent'
 import { Options } from '../../containers/Options'
 import { PostButton } from '../../containers/PostButton'
 import { requestGetPostDetail } from '../../modules/post'
@@ -28,7 +28,7 @@ function Post(props: any) {
     <S.Container>
       <Header isAuth={!!cookies.auth} isMain={false} isSignPage={false} />
       <S.ContentBox>
-        <PostContent />
+        <ViewContent />
         <S.RightMenu>
           <Options
             type="read"
