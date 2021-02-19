@@ -4,6 +4,10 @@ import PALETTE from '../../styles/color-variables'
 import { BOX_STYLE } from '../../styles/common-style'
 
 export const Container = styled.div`
+  width: 40%;
+`
+
+export const TextBox = styled.div`
   width: 100%;
   padding: 30px;
   border-right: 1px solid ${PALETTE.INPUT_BORDER};
