@@ -28,4 +28,5 @@ export type UserState = {
   nickname: string
   password?: string
   email?: string
+  id: number
 }

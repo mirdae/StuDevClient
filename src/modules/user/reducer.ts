@@ -2,6 +2,7 @@ import { UserAction, UserState } from './types'
 import AT from './actionTypes'
 
 const initialState: UserState = {
+  id: 0,
   socialId: '',
   nickname: '',
 }
@@ -19,6 +20,7 @@ export function userReducer(
       console.log(action)
       return {
         ...state,
+        id: action.payload.user.id,
         socialId: action.payload.user.social_id,
         nickname: action.payload.user.nickname,
       }
