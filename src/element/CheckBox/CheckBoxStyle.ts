@@ -8,13 +8,13 @@ type SelectedType = {
 export const Container = styled.div<SelectedType>`
   padding: 5px 10px;
   background-color: ${PALETTE.WHITE};
-  width: 70px;
-  font-size: 0.5em;
+  font-size: 0.6em;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5px 4px;
+  margin: 5px;
+  color: ${PALETTE.MAIN_TEXT};
   cursor: pointer;
   &:hover {
     background-color: ${PALETTE.POINT};
