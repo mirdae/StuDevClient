@@ -11,17 +11,21 @@ import {
   changePostParticipantCountLimit,
 } from '../../modules/post'
 
-const topics = [
-  '백엔드',
-  '프론트엔드',
-  '프로젝트',
-  '모바일',
-  'CS',
-  '프로그래밍언어',
-]
-const onOff = ['온라인', '오프라인']
+type OptionsProps = {
+  type: 'write' | 'read'
+  topics: string[]
+  onOff: string[]
+  participant_count_limit?: string
+  participant_count?: string
+}
 
-function Options() {
+function Options({
+  type,
+  topics,
+  onOff,
+  participant_count,
+  participant_count_limit,
+}: OptionsProps) {
   const dispatch = useDispatch()
   const [selectedTopics, setSelectedTopics] = useState<string[]>([])
   const [selectedOnOff, setSelectedOnOff] = useState<string[]>([])
@@ -67,14 +71,18 @@ function Options() {
           <span>카테고리</span>
         </S.Icon>
         <S.Topic>
-          {topics.map((topic) => (
-            <CheckBox
-              text={topic}
-              selected={selectedTopics.includes(topic)}
-              handleClick={addTopics}
-              key={topic}
-            />
-          ))}
+          {type === 'write'
+            ? topics.map((topic) => (
+                <CheckBox
+                  text={topic}
+                  key={topic}
+                  selected={selectedTopics.includes(topic)}
+                  handleClick={addTopics}
+                />
+              ))
+            : topics.map((topic) => (
+                <CheckBox text={topic} key={topic} selected={false} />
+              ))}
         </S.Topic>
       </S.OptionBox>
       <S.OptionBox>
@@ -83,8 +91,20 @@ function Options() {
           <span>모임인원</span>
         </S.Icon>
         <S.Participant>
-          <input type="text" value={participantCount} onChange={handleInput} />
-          <span>명</span>
+          {type === 'write' ? (
+            <>
+              <input
+                type="text"
+                value={participantCount}
+                onChange={handleInput}
+              />
+              <span>명</span>
+            </>
+          ) : (
+            <S.ShowParticipant>
+              <span>{participant_count}</span> / {participant_count_limit}
+            </S.ShowParticipant>
+          )}
         </S.Participant>
       </S.OptionBox>
       <S.OptionBox>
@@ -93,14 +113,22 @@ function Options() {
           <span>모임방식</span>
         </S.Icon>
         <S.OnOff>
-          {onOff.map((type) => (
-            <CheckBox
-              text={type}
-              selected={selectedOnOff.includes(type)}
-              handleClick={addOnOff}
-              key={type}
-            />
-          ))}
+          {type === 'write'
+            ? onOff.map((type) => (
+                <CheckBox
+                  text={type}
+                  selected={selectedOnOff.includes(type)}
+                  handleClick={addOnOff}
+                  key={type}
+                />
+              ))
+            : onOff.map((type) => (
+                <CheckBox
+                  text={type}
+                  selected={selectedOnOff.includes(type)}
+                  key={type}
+                />
+              ))}
         </S.OnOff>
       </S.OptionBox>
     </S.Container>

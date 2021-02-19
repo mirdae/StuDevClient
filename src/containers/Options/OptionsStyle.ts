@@ -30,8 +30,9 @@ export const Icon = styled.div`
 
 export const Topic = styled.div`
   width: 70%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `
 
 export const OnOff = styled.div`
@@ -54,5 +55,13 @@ export const Participant = styled.div`
   span {
     font-size: 13px;
     margin-left: 10px;
+  }
+`
+export const ShowParticipant = styled.div`
+  font-size: 13px;
+  color: ${PALETTE.SUB_TEXT};
+  span {
+    font-size: 18px;
+    color: ${PALETTE.POINT};
   }
 `
