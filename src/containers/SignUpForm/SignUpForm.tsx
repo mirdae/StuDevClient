@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './SignUpFormStyle'
 import { Input } from '../../element/Input/index'
@@ -16,15 +16,22 @@ function SignUpForm() {
   const [checkPassword, setCheckPassword] = useState('')
   const [email, setEmail] = useState('')
   const [nickname, setNickname] = useState('')
+  const idCheckRef = useRef()
 
   const { isIdDuplicated, isNicknameDuplicated } = useSelector(
     (state) => state.userDuplicateReducer
   )
 
+  const debounceId = (id: string, requestFunc: any) => {
+    clearTimeout(idCheckRef.current)
+    idCheckRef.current = setTimeout(() => {
+      dispatch(requestFunc(id))
+    }, 500)
+  }
+
   const SocialIdDuplicateCheck = (e: any) => {
     const id = e.target.value
-    console.log(id)
-    dispatch(requestDuplicateIdCheck(id))
+    debounceId(id, requestDuplicateIdCheck)
     setSocialId(id)
   }
 
