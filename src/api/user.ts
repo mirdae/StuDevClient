@@ -7,8 +7,8 @@ type User = {
   email?: string
 }
 
-const signUp = async (userInfo: User) => {
-  const { data } = await api.post('/user', userInfo)
+const duplicateIdCheck = async (id: string) => {
+  const { data } = await api.post('/user/check/id', { id })
   return data
 }
 
@@ -17,7 +17,13 @@ const signIn = async (userInfo: User) => {
   return data
 }
 
+const signUp = async (userInfo: User) => {
+  //const { data } = await api.post('/user', userInfo)
+  //return data
+}
+
 export default {
   signUp,
   signIn,
+  duplicateIdCheck,
 }
