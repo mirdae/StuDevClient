@@ -1,4 +1,4 @@
-import React, { EventHandler, FormEventHandler } from 'react'
+import React from 'react'
 import * as S from './InputStyle'
 
 type InputProps = {
@@ -7,11 +7,12 @@ type InputProps = {
   handleChange?: (e: any) => void
   value?: string
   type: 'text' | 'password'
+  notice: 'correct' | 'incorrect' | 'none'
 }
 
 function Input(props: InputProps) {
   return (
-    <S.Container>
+    <S.Container notice={props.notice}>
       <S.Icon>{props.children}</S.Icon>
       <S.Input
         placeholder={props.placeHolder}

@@ -1,17 +1,33 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import PALETTE from '../../styles/color-variables'
 
-export const Container = styled.div`
+type NoticeType = {
+  notice: 'correct' | 'incorrect' | 'none'
+}
+
+export const Container = styled.div<NoticeType>`
   width: 374px;
   height: 50px;
-  border: 1px solid ${PALETTE.INPUT_BORDER};
   border-radius: 10px;
   margin: 15px 0;
   display: flex;
+
+  ${(props) =>
+    props.notice === 'correct'
+      ? css`
+          border: 1px solid ${PALETTE.GREEN};
+        `
+      : props.notice === 'incorrect'
+      ? css`
+          border: 1px solid ${PALETTE.RED};
+        `
+      : css`
+          border: 1px solid ${PALETTE.INPUT_BORDER};
+        `}
 `
 
 export const Icon = styled.div`
-  height: 50px;
+  height: 48px;
   width: 67px;
   border-right: 1px solid ${PALETTE.INPUT_BORDER};
   display: flex;

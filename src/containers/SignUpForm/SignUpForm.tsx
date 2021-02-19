@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as S from './SignUpFormStyle'
 import { Input } from '../../element/Input/index'
 import { Button } from '../../element/Button'
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined'
-import { requestSignUp } from '../../modules/user'
+import { requestSignUp, requestDuplicateIdCheck } from '../../modules/user'
 
 function SignUpForm() {
   const dispatch = useDispatch()
@@ -17,7 +17,17 @@ function SignUpForm() {
   const [email, setEmail] = useState('')
   const [nickname, setNickname] = useState('')
 
-  const SocialIdDuplicateCheck = () => {}
+  const { isIdDuplicated, isNicknameDuplicated } = useSelector(
+    (state) => state.userDuplicateReducer
+  )
+
+  const SocialIdDuplicateCheck = (e: any) => {
+    const id = e.target.value
+    console.log(id)
+    dispatch(requestDuplicateIdCheck(id))
+    setSocialId(id)
+  }
+
   const handleSignUp = () => {
     console.log({ socialId, password, email, nickname })
     dispatch(requestSignUp({ socialId, password, email, nickname }))
@@ -29,7 +39,8 @@ function SignUpForm() {
         type="text"
         placeHolder="아이디"
         value={socialId}
-        handleChange={(e) => setSocialId(e.target.value)}
+        handleChange={SocialIdDuplicateCheck}
+        notice={socialId === '' ? 'none' : isIdDuplicated}
       >
         <AccountCircleOutlinedIcon />
       </Input>
@@ -38,6 +49,7 @@ function SignUpForm() {
         placeHolder="비밀번호"
         value={password}
         handleChange={(e) => setPassword(e.target.value)}
+        notice="none"
       >
         <LockOutlinedIcon />
       </Input>
@@ -46,6 +58,7 @@ function SignUpForm() {
         placeHolder="비밀번호 재확인"
         value={checkPassword}
         handleChange={(e) => setCheckPassword(e.target.value)}
+        notice="none"
       >
         <LockOutlinedIcon />
       </Input>
@@ -54,6 +67,7 @@ function SignUpForm() {
         placeHolder="이메일"
         value={email}
         handleChange={(e) => setEmail(e.target.value)}
+        notice="none"
       >
         <EmailOutlinedIcon />
       </Input>
@@ -62,6 +76,7 @@ function SignUpForm() {
         placeHolder="닉네임"
         value={nickname}
         handleChange={(e) => setNickname(e.target.value)}
+        notice="none"
       >
         <AccountCircleOutlinedIcon />
       </Input>
