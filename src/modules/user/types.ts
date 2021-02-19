@@ -23,10 +23,19 @@ export type UserAction =
   | ReturnType<typeof actions.requestSignUpSuccess>
   | ReturnType<typeof actions.requestSignUpError>
 
+export type DuplicateCheckAction =
+  | ReturnType<typeof actions.requestDuplicateIdCheckSuccess>
+  | ReturnType<typeof actions.requestDuplicateIdCheckError>
+
 export type UserState = {
   socialId: string
   nickname: string
   password?: string
   email?: string
-  id: number
+  id?: number
+}
+
+export type UserDuplicateState = {
+  isIdDuplicated: 'incorrect' | 'correct' | 'none'
+  isNicknameDuplicated: 'incorrect' | 'correct' | 'none'
 }

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { all } from 'redux-saga/effects'
 import { userReducer } from './user/reducer'
-import { userSaga } from './user/saga'
+import { userSaga, userDuplicateReducer } from './user'
 import {
   postReducer,
   createPostReducer,
@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   postReducer,
   createPostReducer,
   postDetailReducer,
+  userDuplicateReducer,
 })
 
 export function* rootSaga() {
@@ -22,4 +23,9 @@ export function* rootSaga() {
 
 export default rootReducer
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState =
+  | ReturnType<typeof userReducer>
+  | ReturnType<typeof postReducer>
+  | ReturnType<typeof createPostReducer>
+  | ReturnType<typeof postDetailReducer>
+  | ReturnType<typeof userDuplicateReducer>
