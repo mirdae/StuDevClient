@@ -13,7 +13,7 @@ function AppRouter() {
       <Route path="/sign-up" component={SignUp} />
       <Route path="/sign-in" component={SignIn} />
       <Route path="/create" component={CreatePost} />
-      <Route path="/post" component={Post} />
+      <Route path="/post/:id" component={Post} />
     </Switch>
   )
 }
