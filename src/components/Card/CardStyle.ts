@@ -10,15 +10,17 @@ export const Container = styled.div`
   box-shadow: ${BOX_STYLE.SHADOW};
   padding: 20px;
   position: relative;
-  margin: 0 auto;
-  transition: background-color 0.5s ease-in-out;
+  margin: 20px auto;
+  transition: color 0.5s ease-in-out;
   cursor: pointer;
   h2 {
     font-size: 1rem;
     font-weight: 600;
   }
   &:hover {
-    background-color: ${PALETTE.POINT};
+    h2 {
+      color: ${PALETTE.POINT};
+    }
   }
 `
 export const MiniInfo = styled.div`
