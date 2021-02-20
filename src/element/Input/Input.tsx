@@ -8,6 +8,7 @@ type InputProps = {
   value?: string
   type: 'text' | 'password'
   notice: 'correct' | 'incorrect' | 'none'
+  alert?: string | undefined
 }
 
 function Input(props: InputProps) {
@@ -20,6 +21,7 @@ function Input(props: InputProps) {
         onChange={props.handleChange}
         type={props.type}
       />
+      <S.Alert>{props.alert}</S.Alert>
     </S.Container>
   )
 }

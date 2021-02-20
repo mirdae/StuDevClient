@@ -11,7 +11,7 @@ export const Container = styled.div<NoticeType>`
   border-radius: 10px;
   margin: 15px 0;
   display: flex;
-
+  position: relative;
   ${(props) =>
     props.notice === 'correct'
       ? css`
@@ -46,4 +46,12 @@ export const Input = styled.input`
   &::placeholder {
     color: ${PALETTE.INPUT_TEXT};
   }
+`
+
+export const Alert = styled.div`
+  position: absolute;
+  bottom: -15px;
+  left: 70px;
+  color: ${PALETTE.RED};
+  font-size: 9px;
 `
