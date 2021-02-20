@@ -26,6 +26,8 @@ export type UserAction =
 export type DuplicateCheckAction =
   | ReturnType<typeof actions.requestDuplicateIdCheckSuccess>
   | ReturnType<typeof actions.requestDuplicateIdCheckError>
+  | ReturnType<typeof actions.requestDuplicateNicknameCheckSuccess>
+  | ReturnType<typeof actions.requestDuplicateNicknameCheckError>
 
 export type UserState = {
   socialId: string

@@ -51,7 +51,14 @@ export function userDuplicateReducer(
         ...state,
         isIdDuplicated: action.payload ? 'incorrect' : 'correct',
       }
-    case AT.REQUEST_EDIT_USER_INFO_ERROR:
+    case AT.REQUEST_DUPLICATE_ID_CHECK_ERROR:
+      return { ...state }
+    case AT.REQUEST_DUPLICATE_NICKNAME_CHECK_SUCCESS:
+      return {
+        ...state,
+        isNicknameDuplicated: action.payload ? 'incorrect' : 'correct',
+      }
+    case AT.REQUEST_DUPLICATE_NICKNAME_CHECK_ERROR:
       return { ...state }
     default:
       return { ...state }

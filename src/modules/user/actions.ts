@@ -85,3 +85,19 @@ export const requestDuplicateIdCheckError = (result: boolean) => ({
   type: AT.REQUEST_DUPLICATE_ID_CHECK_ERROR,
   payload: result,
 })
+
+//requestDuplicateNicknameCheck
+export const requestDuplicateNicknameCheck = (nickname: string) => ({
+  type: AT.REQUEST_DUPLICATE_NICKNAME_CHECK,
+  payload: nickname,
+})
+
+export const requestDuplicateNicknameCheckSuccess = (result: boolean) => ({
+  type: AT.REQUEST_DUPLICATE_NICKNAME_CHECK_SUCCESS,
+  payload: result,
+})
+
+export const requestDuplicateNicknameCheckError = (result: boolean) => ({
+  type: AT.REQUEST_DUPLICATE_NICKNAME_CHECK_ERROR,
+  payload: result,
+})

@@ -12,6 +12,11 @@ const duplicateIdCheck = async (id: string) => {
   return data
 }
 
+const duplicateNicknameCheck = async (nickname: string) => {
+  const { data } = await api.post('/user/check/nickname', { nickname })
+  return data
+}
+
 const signIn = async (userInfo: User) => {
   const { data } = await api.post('/user/signin', userInfo)
   return data
@@ -26,4 +31,5 @@ export default {
   signUp,
   signIn,
   duplicateIdCheck,
+  duplicateNicknameCheck,
 }

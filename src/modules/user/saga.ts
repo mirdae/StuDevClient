@@ -50,8 +50,28 @@ function* duplicateIdCheckSaga({ payload }: any) {
   }
 }
 
+function* duplicateNicknameCheckSaga({ payload }: any) {
+  try {
+    const data = yield call(API.User.duplicateNicknameCheck, payload)
+    yield put({
+      type: AT.REQUEST_DUPLICATE_NICKNAME_CHECK_SUCCESS,
+      payload: data.duplicate,
+    })
+  } catch (error) {
+    yield put({
+      type: AT.REQUEST_DUPLICATE_NICKNAME_CHECK_ERROR,
+      payload: error,
+      error: true,
+    })
+  }
+}
+
 export function* userSaga() {
   yield takeLatest(AT.REQUEST_SIGN_UP, signUpSaga)
   yield takeLatest(AT.REQUEST_SIGN_IN, signInSaga)
   yield takeEvery(AT.REQUEST_DUPLICATE_ID_CHECK, duplicateIdCheckSaga)
+  yield takeEvery(
+    AT.REQUEST_DUPLICATE_NICKNAME_CHECK,
+    duplicateNicknameCheckSaga
+  )
 }
