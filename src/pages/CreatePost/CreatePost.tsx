@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
+import { useSelector } from 'react-redux'
 import * as S from './CreatePostStyle'
 import { Header } from '../../components/Header'
 import { CreateForm } from '../../containers/CreateForm'
@@ -18,6 +19,8 @@ const onOff = ['온라인', '오프라인']
 
 function CreatePost(props: any) {
   const [cookies, _, __] = useCookies(['auth'])
+  const isCreated = useSelector((state) => state.createPostReducer.isCreated)
+
   useEffect(() => {
     if (!cookies.auth) {
       console.log(!cookies.auth)
@@ -25,6 +28,13 @@ function CreatePost(props: any) {
       props.history.push('/')
     }
   }, [])
+
+  useEffect(() => {
+    if (isCreated === 'success') {
+      props.history.push('/')
+    }
+  }, [isCreated])
+
   return (
     <S.Container>
       <Header isAuth={!!cookies} isMain={false} isSignPage={false} />
