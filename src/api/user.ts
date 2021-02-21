@@ -23,8 +23,8 @@ const signIn = async (userInfo: User) => {
 }
 
 const signUp = async (userInfo: User) => {
-  //const { data } = await api.post('/user', userInfo)
-  //return data
+  const { data } = await api.post('/user', userInfo)
+  return data
 }
 
 export default {
