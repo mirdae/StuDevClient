@@ -66,3 +66,19 @@ export const requestGetPostDetailError = (post: PostState) => ({
   type: AT.REQUEST_GET_POST_DETAIL_ERROR,
   payload: post,
 })
+
+//requestParticipateApply
+export const requestParticipateApply = (postId: number) => ({
+  type: AT.REQUEST_PARTICIPATE_APPLY,
+  payload: postId,
+})
+
+export const requestParticipateApplySuccess = (post: PostState) => ({
+  type: AT.REQUEST_PARTICIPATE_APPLY_SUCCESS,
+  payload: post,
+})
+
+export const requestParticipateApplyError = (post: PostState) => ({
+  type: AT.REQUEST_PARTICIPATE_APPLY_ERROR,
+  payload: post,
+})

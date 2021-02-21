@@ -14,6 +14,7 @@ const initialCreatPostState: PostState = {
   topic_category: '',
   on_off_category: '',
   participant_count_limit: 0,
+  isCreated: 'fail',
 }
 
 export function createPostReducer(
@@ -22,7 +23,7 @@ export function createPostReducer(
 ): PostState {
   switch (action.type) {
     case AT.REQUEST_CREATE_POST_SUCCESS:
-      return { ...state }
+      return { ...state, isCreated: action.payload }
     case AT.REQUEST_CREATE_POST_ERROR:
       return { ...state }
     case AT.CHANGE_POST_TITLE:
@@ -81,6 +82,7 @@ const initialDetailPostState: PostState = {
   updated_at: '',
   views: 0,
   comment: [],
+  participant: [],
 }
 
 export function postDetailReducer(
@@ -89,8 +91,18 @@ export function postDetailReducer(
 ): PostState {
   switch (action.type) {
     case AT.REQUEST_GET_POST_DETAIL_SUCCESS:
-      return { ...action.payload }
+      return {
+        ...action.payload,
+        created_at: action.payload.created_at?.split('T')[0],
+      }
     case AT.REQUEST_GET_POST_DETAIL_ERROR:
+      return { ...state }
+    case AT.REQUEST_PARTICIPATE_APPLY_SUCCESS:
+      return {
+        ...action.payload,
+        created_at: action.payload.created_at?.split('T')[0],
+      }
+    case AT.REQUEST_PARTICIPATE_APPLY_ERROR:
       return { ...state }
     default:
       return state

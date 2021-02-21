@@ -31,6 +31,8 @@ export type PostState = {
   updated_at?: string
   views?: number
   comment?: []
+  isCreated?: 'fail' | 'success'
+  participant?: number[]
 }
 
 export type PostStateArr = {
