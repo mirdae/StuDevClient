@@ -6,7 +6,7 @@ import * as S from './PostStyle'
 import { Header } from '../../components/Header'
 import { ViewContent } from '../../containers/ViewContent'
 import { Options } from '../../containers/Options'
-import { PostButton } from '../../containers/PostButton'
+import { PostButtonBox } from '../../containers/PostButtonBox'
 import { requestGetPostDetail } from '../../modules/post'
 
 function Post(props: any) {
@@ -18,8 +18,9 @@ function Post(props: any) {
     on_off_category,
     participant_count_limit,
     participant_count,
+    user_id: post_user_id,
   } = useSelector((state) => state.postDetailReducer)
-
+  const user_id = useSelector((state) => state.userReducer.id)
   useEffect(() => {
     dispatch(requestGetPostDetail(props.match.params.id))
   }, [])
@@ -37,7 +38,11 @@ function Post(props: any) {
             participant_count_limit={participant_count_limit}
             participant_count={participant_count}
           />
-          <PostButton />
+          <PostButtonBox
+            isWriter={post_user_id === user_id}
+            isParticipated={false}
+            postId={props.match.params.id}
+          />
         </S.RightMenu>
       </S.ContentBox>
     </S.Container>
