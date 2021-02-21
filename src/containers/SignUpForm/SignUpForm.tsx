@@ -104,7 +104,9 @@ function SignUpForm() {
         handleChange={socialIdDuplicateCheck}
         notice={socialId === '' ? 'none' : isIdDuplicated}
         alert={
-          isIdDuplicated === 'incorrect' ? '이미 존재하는 아이디입니다.' : ''
+          socialId !== '' && isIdDuplicated === 'incorrect'
+            ? '이미 존재하는 아이디입니다.'
+            : ''
         }
       >
         <AccountCircleOutlinedIcon />
@@ -116,7 +118,7 @@ function SignUpForm() {
         handleChange={changePassword}
         notice={password === '' ? 'none' : passwordCheck}
         alert={
-          passwordCheck === 'incorrect'
+          password !== '' && passwordCheck === 'incorrect'
             ? '알파벳, 숫자, 특수문자로 구성된 8 - 12 자리의 값을 입력해 주세요.'
             : ''
         }
@@ -164,7 +166,7 @@ function SignUpForm() {
         handleChange={nicknameDuplicateCheck}
         notice={nickname === '' ? 'none' : isNicknameDuplicated}
         alert={
-          isNicknameDuplicated === 'incorrect'
+          nickname !== '' && isNicknameDuplicated === 'incorrect'
             ? '이미 존재하는 닉네임입니다.'
             : ''
         }

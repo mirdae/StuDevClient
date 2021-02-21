@@ -24,6 +24,7 @@ function SignInForm() {
         placeHolder="아이디"
         value={socialId}
         handleChange={(e) => setSocialId(e.target.value)}
+        notice="none"
       >
         <AccountCircleOutlinedIcon />
       </Input>
@@ -32,6 +33,7 @@ function SignInForm() {
         placeHolder="비밀번호"
         value={password}
         handleChange={(e) => setPassword(e.target.value)}
+        notice="none"
       >
         <LockOutlinedIcon />
       </Input>
