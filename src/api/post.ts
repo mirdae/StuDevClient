@@ -8,6 +8,11 @@ type Post = {
   participant_count_limit: number
 }
 
+type ParticipateInfo = {
+  user_id: number
+  post_id: number
+}
+
 const getAllPosts = async () => {
   const { data } = await api.get('/post')
   return data
@@ -22,8 +27,15 @@ const getPostDetail = async (postId: number) => {
   const { data } = await api.get(`/post/${postId}`)
   return data
 }
+
+const participateApply = async (postId: number) => {
+  const { data } = await api.get(`/post/${postId}/participate`)
+  return data
+}
+
 export default {
   createPost,
   getAllPosts,
   getPostDetail,
+  participateApply,
 }
