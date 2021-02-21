@@ -13,7 +13,8 @@ function PostContent({ title, content, createdAt }: PostContentProps) {
       <S.TextBox>
         <S.ContentBox>
           <S.Title>
-            {title} | {createdAt}
+            <span>{title}</span>
+            <p>{createdAt}</p>
           </S.Title>
           <S.Content>{content}</S.Content>
         </S.ContentBox>

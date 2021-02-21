@@ -21,6 +21,8 @@ export const ContentBox = styled.div`
   background-color: ${PALETTE.WHITE};
   border-radius: 10px;
   width: 100%;
+  font-size: 15px;
+  line-height: 19px;
 `
 
 export const Title = styled.div`
@@ -30,7 +32,14 @@ export const Title = styled.div`
   font-size: 20px;
   color: #7a7a7a;
   border-bottom: 1px solid ${PALETTE.INPUT_BORDER};
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  p {
+    font-size: 13px;
+  }
 `
+
 export const Content = styled.div`
   width: 100%;
   border-radius: 10px 10px 0 0;
