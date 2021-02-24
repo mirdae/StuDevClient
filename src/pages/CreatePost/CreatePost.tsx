@@ -17,27 +17,25 @@ const topics = [
 ]
 const onOff = ['온라인', '오프라인']
 
-function CreatePost(props: any) {
-  const [cookies, _, __] = useCookies(['auth'])
+type CreatePostProps = {
+  isAuth: boolean
+  props: any
+}
+
+function CreatePost({ isAuth, props }: CreatePostProps) {
   const isCreated = useSelector((state) => state.createPostReducer.isCreated)
 
   useEffect(() => {
-    if (!cookies.auth) {
-      console.log(!cookies.auth)
-      // 쿠키가 없을때
-      props.history.push('/')
-    }
-  }, [])
-
-  useEffect(() => {
+    // 이부분 개선이 필요함 isCreated를 true로 변경해야함(isCreated를 false로 변경하는 액션 만들기)
     if (isCreated === 'success') {
       props.history.push('/')
     }
   }, [isCreated])
 
+  // 헤더부분 수정해야됨
   return (
     <S.Container>
-      <Header isAuth={!!cookies} isMain={false} isSignPage={false} />
+      <Header isAuth={true} isMain={false} isSignPage={false} />
       <S.ContentBox>
         <CreateForm />
         <Options topics={topics} onOff={onOff} type="write" />

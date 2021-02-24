@@ -5,15 +5,12 @@ import * as S from './SignInStyle'
 import { SignInForm } from '../../containers/SignInForm'
 import { Header } from '../../components/Header'
 
-function SignIn(props: any) {
-  const userId = useSelector((state) => state.userReducer.id)
-  useEffect(() => {
-    console.log(userId)
-    if (userId) {
-      props.history.push('/')
-    }
-  })
+type SignInProps = {
+  isAuth: boolean
+  props: any
+}
 
+function SignIn({ isAuth, props }: SignInProps) {
   return (
     <S.Container>
       <Header isAuth={false} isMain={false} isSignPage={true} />

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PALETTE from '../../styles/color-variables'
 
 export const Container = styled.div`
   display: flex;
@@ -16,6 +17,12 @@ export const ContentBox = styled.div`
   margin: 7vh 0;
 `
 
+export const LeftContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+`
 export const RightMenu = styled.div`
   display: flex;
   flex-direction: column;

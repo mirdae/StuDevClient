@@ -8,28 +8,39 @@ import { ViewContent } from '../../containers/ViewContent'
 import { Options } from '../../containers/Options'
 import { PostButtonBox } from '../../containers/PostButtonBox'
 import { requestGetPostDetail } from '../../modules/post'
+import { CommentList } from '../../containers/CommentList'
+import { CreateComment } from '../../components/CreateComment'
 
-function Post(props: any) {
+type PostProps = {
+  isAuth: boolean
+  props: any
+}
+
+function Post({ isAuth, props }: PostProps) {
   const dispatch = useDispatch()
 
-  const [cookies, _, __] = useCookies(['auth'])
   const {
     topic_category,
     on_off_category,
     participant_count_limit,
     participant_count,
+    participant,
     user_id: post_user_id,
   } = useSelector((state) => state.postDetailReducer)
   const user_id = useSelector((state) => state.userReducer.id)
   useEffect(() => {
     dispatch(requestGetPostDetail(props.match.params.id))
   }, [])
-
+  console.log(participant.includes(user_id))
   return (
     <S.Container>
-      <Header isAuth={!!cookies.auth} isMain={false} isSignPage={false} />
+      <Header isAuth={isAuth} isMain={false} isSignPage={false} />
       <S.ContentBox>
-        <ViewContent />
+        <S.LeftContent>
+          <ViewContent />
+          <CommentList />
+          <CreateComment />
+        </S.LeftContent>
         <S.RightMenu>
           <Options
             type="read"
@@ -40,7 +51,7 @@ function Post(props: any) {
           />
           <PostButtonBox
             isWriter={post_user_id === user_id}
-            isParticipated={false}
+            isParticipated={participant.includes(`${user_id}`)}
             postId={props.match.params.id}
           />
         </S.RightMenu>
@@ -49,4 +60,4 @@ function Post(props: any) {
   )
 }
 
-export default withRouter(Post)
+export default Post
