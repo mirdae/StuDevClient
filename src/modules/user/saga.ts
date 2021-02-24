@@ -2,6 +2,22 @@ import { takeLatest, call, put, takeEvery } from 'redux-saga/effects'
 import AT from './actionTypes'
 import API from '../../api'
 
+function* authSaga() {
+  try {
+    const data = yield call(API.User.auth)
+    yield put({
+      type: AT.REQUEST_AUTH_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    yield put({
+      type: AT.REQUEST_AUTH_ERROR,
+      payload: error,
+      error: true,
+    })
+  }
+}
+
 function* signUpSaga({ payload }: any) {
   try {
     const data = yield call(API.User.signUp, payload)
@@ -67,6 +83,7 @@ function* duplicateNicknameCheckSaga({ payload }: any) {
 }
 
 export function* userSaga() {
+  yield takeLatest(AT.REQUEST_AUTH, authSaga)
   yield takeLatest(AT.REQUEST_SIGN_UP, signUpSaga)
   yield takeLatest(AT.REQUEST_SIGN_IN, signInSaga)
   yield takeEvery(AT.REQUEST_DUPLICATE_ID_CHECK, duplicateIdCheckSaga)

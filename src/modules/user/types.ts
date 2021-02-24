@@ -1,6 +1,9 @@
 import * as actions from './actions'
 
 export type UserActions =
+  | ReturnType<typeof actions.requestAuth>
+  | ReturnType<typeof actions.requestAuthSuccess>
+  | ReturnType<typeof actions.requestAuthError>
   | ReturnType<typeof actions.requestUserInfo>
   | ReturnType<typeof actions.requestUserInfoSuccess>
   | ReturnType<typeof actions.requestUserInfoError>

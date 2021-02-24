@@ -31,6 +31,16 @@ export function userReducer(
       }
     case AT.REQUEST_SIGN_IN_ERROR:
       return { ...state }
+    case AT.REQUEST_AUTH_SUCCESS:
+      console.log(action)
+      return {
+        ...state,
+        id: action.payload.user.id,
+        socialId: action.payload.user.social_id,
+        nickname: action.payload.user.nickname,
+      }
+    case AT.REQUEST_AUTH_ERROR:
+      return { ...state }
     default:
       return { ...state }
   }

@@ -1,5 +1,20 @@
 import AT from './actionTypes'
 import { UserState } from './types'
+//requestAuth
+export const requestAuth = () => ({
+  type: AT.REQUEST_AUTH,
+})
+
+export const requestAuthSuccess = (userInfo: UserState) => ({
+  type: AT.REQUEST_AUTH_SUCCESS,
+  payload: userInfo,
+})
+
+export const requestAuthError = (userInfo: UserState) => ({
+  type: AT.REQUEST_AUTH_ERROR,
+  payload: userInfo,
+})
+
 //requestUserInfo
 export const requestUserInfo = () => ({
   type: AT.REQUEST_GET_USER_INFO,
