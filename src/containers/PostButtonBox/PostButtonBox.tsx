@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as S from './PostButtonBoxStyle'
 import { Button } from '../../element/Button'
-import { requestParticipateApply } from '../../modules/post'
+import {
+  requestParticipateApply,
+  requestParticipateCancel,
+} from '../../modules/post'
+import { Participant } from '../Options/OptionsStyle'
+import { PinDropSharp } from '@material-ui/icons'
 
 type PostButtonBoxProps = {
   isWriter: boolean
@@ -19,7 +24,13 @@ function PostButtonBox({
   const dispatch = useDispatch()
 
   const handleParticipate = () => {
+    // 로그인 안했을때 처리
+
     dispatch(requestParticipateApply(postId))
+  }
+
+  const handleCancelParticipate = () => {
+    dispatch(requestParticipateCancel(postId))
   }
 
   const handleClick = () => {}
@@ -42,7 +53,7 @@ function PostButtonBox({
       ) : isParticipated ? (
         <Button
           text="신청 취소하기"
-          handleClick={handleClick}
+          handleClick={handleCancelParticipate}
           buttonType="submit"
         />
       ) : (
