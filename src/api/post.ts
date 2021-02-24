@@ -33,9 +33,15 @@ const participateApply = async (postId: number) => {
   return data
 }
 
+const participateCancel = async (postId: number) => {
+  const { data } = await api.delete(`/post/${postId}/participate`)
+  return data
+}
+
 export default {
   createPost,
   getAllPosts,
   getPostDetail,
   participateApply,
+  participateCancel,
 }
