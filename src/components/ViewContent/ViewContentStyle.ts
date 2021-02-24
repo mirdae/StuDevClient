@@ -4,7 +4,7 @@ import PALETTE from '../../styles/color-variables'
 import { BOX_STYLE } from '../../styles/common-style'
 
 export const Container = styled.div`
-  width: 40%;
+  width: 100%;
 `
 
 export const TextBox = styled.div`

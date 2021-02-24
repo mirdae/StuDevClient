@@ -4,6 +4,9 @@ import PALETTE from '../../styles/color-variables'
 
 export const Container = styled.div`
   height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background-color: ${PALETTE.WHITE};
   display: flex;

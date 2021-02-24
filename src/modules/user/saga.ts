@@ -83,7 +83,7 @@ function* duplicateNicknameCheckSaga({ payload }: any) {
 }
 
 export function* userSaga() {
-  yield takeLatest(AT.REQUEST_AUTH, authSaga)
+  yield takeEvery(AT.REQUEST_AUTH, authSaga)
   yield takeLatest(AT.REQUEST_SIGN_UP, signUpSaga)
   yield takeLatest(AT.REQUEST_SIGN_IN, signInSaga)
   yield takeEvery(AT.REQUEST_DUPLICATE_ID_CHECK, duplicateIdCheckSaga)
