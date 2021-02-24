@@ -55,15 +55,31 @@ function* getPostDetailSaga({ payload }: PostDetailAction) {
 
 function* participateApplySaga({ payload }: PostDetailAction) {
   try {
-    const { post } = yield call(API.Post.participateApply, payload)
-    console.log(post)
+    const data = yield call(API.Post.participateApply, payload)
+    console.log(data)
     yield put({
       type: AT.REQUEST_PARTICIPATE_APPLY_SUCCESS,
-      payload: post,
+      payload: data,
     })
   } catch (error) {
     yield put({
       type: AT.REQUEST_PARTICIPATE_APPLY_ERROR,
+      payload: error,
+      error: true,
+    })
+  }
+}
+
+function* participateCancelSaga({ payload }: PostDetailAction) {
+  try {
+    const { post } = yield call(API.Post.participateCancel, payload)
+    yield put({
+      type: AT.REQUEST_PARTICIPATE_CANCEL_SUCCESS,
+      payload: post,
+    })
+  } catch (error) {
+    yield put({
+      type: AT.REQUEST_PARTICIPATE_CANCEL_ERROR,
       payload: error,
       error: true,
     })
@@ -75,4 +91,5 @@ export function* postSaga() {
   yield takeLatest(AT.REQUEST_GET_ALL_POSTS, getAllPostsSaga)
   yield takeLatest(AT.REQUEST_GET_POST_DETAIL, getPostDetailSaga)
   yield takeEvery(AT.REQUEST_PARTICIPATE_APPLY, participateApplySaga)
+  yield takeEvery(AT.REQUEST_PARTICIPATE_CANCEL, participateCancelSaga)
 }

@@ -31,7 +31,7 @@ function Post({ isAuth, props }: PostProps) {
   useEffect(() => {
     dispatch(requestGetPostDetail(props.match.params.id))
   }, [])
-  console.log(participant.includes(user_id))
+
   return (
     <S.Container>
       <Header isAuth={isAuth} isMain={false} isSignPage={false} />
@@ -51,7 +51,7 @@ function Post({ isAuth, props }: PostProps) {
           />
           <PostButtonBox
             isWriter={post_user_id === user_id}
-            isParticipated={participant.includes(`${user_id}`)}
+            isParticipated={participant.includes(user_id.toString())}
             postId={props.match.params.id}
           />
         </S.RightMenu>

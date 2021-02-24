@@ -5,8 +5,10 @@ import {
   PostState,
   PostStateArr,
   PostDetailActionResult,
+  PostDetailState,
 } from './types'
 import AT from './actionTypes'
+import { Participant } from '../../containers/Options/OptionsStyle'
 
 const initialCreatPostState: PostState = {
   title: '',
@@ -14,6 +16,7 @@ const initialCreatPostState: PostState = {
   topic_category: '',
   on_off_category: '',
   participant_count_limit: 0,
+  views: 0,
   isCreated: 'fail',
 }
 
@@ -71,7 +74,7 @@ export function postReducer(
   }
 }
 
-const initialDetailPostState: PostState = {
+const initialDetailPostState: PostDetailState = {
   title: '',
   content: '',
   topic_category: '',
@@ -86,9 +89,9 @@ const initialDetailPostState: PostState = {
 }
 
 export function postDetailReducer(
-  state: PostState = initialDetailPostState,
+  state: PostDetailState = initialDetailPostState,
   action: PostDetailActionResult
-): PostState {
+): PostDetailState {
   switch (action.type) {
     case AT.REQUEST_GET_POST_DETAIL_SUCCESS:
       return {
@@ -99,10 +102,20 @@ export function postDetailReducer(
       return { ...state }
     case AT.REQUEST_PARTICIPATE_APPLY_SUCCESS:
       return {
-        ...action.payload,
-        created_at: action.payload.created_at?.split('T')[0],
+        ...state,
+        participant: [...state.participant, action.payload.user_id.toString()],
+        participant_count: state.participant_count + 1,
       }
     case AT.REQUEST_PARTICIPATE_APPLY_ERROR:
+      return { ...state }
+    case AT.REQUEST_PARTICIPATE_CANCEL_SUCCESS:
+      state.participant.splice(state.participant_count - 1, 1)
+      return {
+        ...state,
+        participant: state.participant,
+        participant_count: state.participant_count - 1,
+      }
+    case AT.REQUEST_PARTICIPATE_CANCEL_ERROR:
       return { ...state }
     default:
       return state

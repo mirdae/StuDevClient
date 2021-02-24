@@ -1,5 +1,5 @@
 import AT from './actionTypes'
-import { PostState, PostStateArr } from './types'
+import { PostState, PostStateArr, PostDetailState } from './types'
 
 //requestCreatePost
 export const requestCreatePost = (postInfo: any) => ({
@@ -57,12 +57,12 @@ export const requestGetPostDetail = (postId: number) => ({
   payload: postId,
 })
 
-export const requestGetPostDetailSuccess = (post: PostState) => ({
+export const requestGetPostDetailSuccess = (post: PostDetailState) => ({
   type: AT.REQUEST_GET_POST_DETAIL_SUCCESS,
   payload: post,
 })
 
-export const requestGetPostDetailError = (post: PostState) => ({
+export const requestGetPostDetailError = (post: PostDetailState) => ({
   type: AT.REQUEST_GET_POST_DETAIL_ERROR,
   payload: post,
 })
@@ -73,12 +73,28 @@ export const requestParticipateApply = (postId: number) => ({
   payload: postId,
 })
 
-export const requestParticipateApplySuccess = (post: PostState) => ({
+export const requestParticipateApplySuccess = (post: PostDetailState) => ({
   type: AT.REQUEST_PARTICIPATE_APPLY_SUCCESS,
   payload: post,
 })
 
-export const requestParticipateApplyError = (post: PostState) => ({
+export const requestParticipateApplyError = (post: PostDetailState) => ({
   type: AT.REQUEST_PARTICIPATE_APPLY_ERROR,
+  payload: post,
+})
+
+//requestParticipateApply
+export const requestParticipateCancel = (postId: number) => ({
+  type: AT.REQUEST_PARTICIPATE_CANCEL,
+  payload: postId,
+})
+
+export const requestParticipateCancelSuccess = (post: PostDetailState) => ({
+  type: AT.REQUEST_PARTICIPATE_CANCEL_SUCCESS,
+  payload: post,
+})
+
+export const requestParticipateCancelError = (post: PostDetailState) => ({
+  type: AT.REQUEST_PARTICIPATE_CANCEL_ERROR,
   payload: post,
 })
