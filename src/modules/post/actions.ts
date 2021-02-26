@@ -1,5 +1,5 @@
 import AT from './actionTypes'
-import { PostState, PostStateArr, PostDetailState } from './types'
+import { PostState, PostStateArr, PostDetailState, CommentState } from './types'
 
 //requestCreatePost
 export const requestCreatePost = (postInfo: any) => ({
@@ -97,4 +97,20 @@ export const requestParticipateCancelSuccess = (post: PostDetailState) => ({
 export const requestParticipateCancelError = (post: PostDetailState) => ({
   type: AT.REQUEST_PARTICIPATE_CANCEL_ERROR,
   payload: post,
+})
+
+//requestCreateComment
+export const requestCreateComment = (commentInfo: CommentState) => ({
+  type: AT.REQUEST_CREATE_COMMENT,
+  payload: commentInfo,
+})
+
+export const requestCreateCommentSuccess = (commentInfo: CommentState) => ({
+  type: AT.REQUEST_CREATE_COMMENT_SUCCESS,
+  payload: commentInfo,
+})
+
+export const requestCreateCommentError = (commentInfo: CommentState) => ({
+  type: AT.REQUEST_CREATE_COMMENT_ERROR,
+  payload: commentInfo,
 })

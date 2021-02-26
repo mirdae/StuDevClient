@@ -86,10 +86,28 @@ function* participateCancelSaga({ payload }: PostDetailAction) {
   }
 }
 
+function* createCommentSaga({ payload }: any) {
+  try {
+    const { commentInfo } = yield call(API.Post.createComment, payload)
+    console.log(commentInfo)
+    yield put({
+      type: AT.REQUEST_CREATE_COMMENT_SUCCESS,
+      payload: commentInfo,
+    })
+  } catch (error) {
+    yield put({
+      type: AT.REQUEST_CREATE_COMMENT_ERROR,
+      payload: error,
+      error: true,
+    })
+  }
+}
+
 export function* postSaga() {
   yield takeLatest(AT.REQUEST_CREATE_POST, createPostSaga)
   yield takeLatest(AT.REQUEST_GET_ALL_POSTS, getAllPostsSaga)
   yield takeLatest(AT.REQUEST_GET_POST_DETAIL, getPostDetailSaga)
   yield takeEvery(AT.REQUEST_PARTICIPATE_APPLY, participateApplySaga)
   yield takeEvery(AT.REQUEST_PARTICIPATE_CANCEL, participateCancelSaga)
+  yield takeEvery(AT.REQUEST_CREATE_COMMENT, createCommentSaga)
 }

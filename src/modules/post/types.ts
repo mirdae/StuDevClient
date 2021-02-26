@@ -25,6 +25,9 @@ export type PostDetailActionResult =
   | ReturnType<typeof actions.requestParticipateApplyError>
   | ReturnType<typeof actions.requestParticipateCancelSuccess>
   | ReturnType<typeof actions.requestParticipateCancelError>
+  | ReturnType<typeof actions.requestCreateComment>
+  | ReturnType<typeof actions.requestCreateCommentSuccess>
+  | ReturnType<typeof actions.requestCreateCommentError>
 
 export type PostState = {
   id?: number
@@ -58,4 +61,13 @@ export type PostDetailState = {
 
 export type PostStateArr = {
   posts: PostState[]
+}
+
+export type CommentState = {
+  id?: number
+  comment: string
+  created_at?: string
+  post_id: number
+  user_id?: number
+  nickname?: string
 }

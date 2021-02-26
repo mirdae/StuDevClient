@@ -26,6 +26,7 @@ function Post({ isAuth, props }: PostProps) {
     participant_count,
     participant,
     user_id: post_user_id,
+    id: post_id,
   } = useSelector((state) => state.postDetailReducer)
   const user_id = useSelector((state) => state.userReducer.id)
   useEffect(() => {
@@ -39,7 +40,7 @@ function Post({ isAuth, props }: PostProps) {
         <S.LeftContent>
           <ViewContent />
           <CommentList />
-          <CreateComment />
+          <CreateComment postId={post_id} />
         </S.LeftContent>
         <S.RightMenu>
           <Options

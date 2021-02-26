@@ -74,7 +74,7 @@ export function postReducer(
   }
 }
 
-const initialDetailPostState: PostDetailState = {
+const initialDetailPostState: any = {
   title: '',
   content: '',
   topic_category: '',
@@ -89,7 +89,7 @@ const initialDetailPostState: PostDetailState = {
 }
 
 export function postDetailReducer(
-  state: PostDetailState = initialDetailPostState,
+  state: any = initialDetailPostState,
   action: PostDetailActionResult
 ): PostDetailState {
   switch (action.type) {
@@ -116,6 +116,13 @@ export function postDetailReducer(
         participant_count: state.participant_count - 1,
       }
     case AT.REQUEST_PARTICIPATE_CANCEL_ERROR:
+      return { ...state }
+    case AT.REQUEST_CREATE_COMMENT_SUCCESS:
+      console.log([...state.comment, action.payload])
+      return {
+        ...state,
+      }
+    case AT.REQUEST_CREATE_COMMENT_ERROR:
       return { ...state }
     default:
       return state
