@@ -13,6 +13,11 @@ type ParticipateInfo = {
   post_id: number
 }
 
+type Comment = {
+  comment: string
+  post_id: number
+}
+
 const getAllPosts = async () => {
   const { data } = await api.get('/post')
   return data
@@ -38,10 +43,17 @@ const participateCancel = async (postId: number) => {
   return data
 }
 
+const createComment = async (commentInfo: Comment) => {
+  const { data } = await api.post(`/post/${commentInfo.post_id}/comment`, {
+    comment: commentInfo.comment,
+  })
+  return data
+}
 export default {
   createPost,
   getAllPosts,
   getPostDetail,
   participateApply,
   participateCancel,
+  createComment,
 }
