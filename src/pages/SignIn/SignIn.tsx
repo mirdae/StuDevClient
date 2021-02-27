@@ -14,7 +14,7 @@ function SignIn({ isAuth, props }: SignInProps) {
   return (
     <S.Container>
       <Header isAuth={false} isMain={false} isSignPage={true} />
-      <SignInForm></SignInForm>
+      <SignInForm props={props}></SignInForm>
     </S.Container>
   )
 }

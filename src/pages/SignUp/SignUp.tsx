@@ -3,11 +3,15 @@ import * as S from './SignUpStyle'
 import { SignUpForm } from '../../containers/SignUpForm'
 import { Header } from '../../components/Header'
 
-function SignUp() {
+type SignUpProps = {
+  props: any
+}
+
+function SignUp({ props }: SignUpProps) {
   return (
     <S.Container>
       <Header isAuth={false} isMain={false} isSignPage={true} />
-      <SignUpForm></SignUpForm>
+      <SignUpForm props={props}></SignUpForm>
     </S.Container>
   )
 }

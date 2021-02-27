@@ -38,6 +38,7 @@ export type UserState = {
   password?: string
   email?: string
   id?: number
+  isRegistered?: boolean
 }
 
 export type UserDuplicateState = {

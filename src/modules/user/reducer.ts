@@ -10,6 +10,7 @@ const initialState: UserState = {
   id: 0,
   socialId: '',
   nickname: '',
+  isRegistered: false,
 }
 
 export function userReducer(
@@ -18,9 +19,10 @@ export function userReducer(
 ): UserState {
   switch (action.type) {
     case AT.REQUEST_SIGN_UP_SUCCESS:
-      return { ...state }
+      return { ...state, isRegistered: action.payload }
     case AT.REQUEST_SIGN_UP_ERROR:
-      return { ...state }
+      return { ...state, isRegistered: action.payload }
+
     case AT.REQUEST_SIGN_IN_SUCCESS:
       console.log(action)
       return {

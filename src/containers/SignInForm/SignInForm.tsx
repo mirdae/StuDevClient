@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { requestSignIn } from '../../modules/user/actions'
 import * as S from './SignInFormStyle'
 import { Input } from '../../element/Input/index'
@@ -8,10 +8,21 @@ import { Link } from 'react-router-dom'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
-function SignInForm() {
+type SignInFormProps = {
+  props: any
+}
+function SignInForm({ props }: SignInFormProps) {
   const dispatch = useDispatch()
   const [socialId, setSocialId] = useState('')
   const [password, setPassword] = useState('')
+
+  const { id } = useSelector((state) => state.userReducer)
+
+  useEffect(() => {
+    if (id > 0) {
+      props.history.push('/')
+    }
+  }, [id])
 
   const handleSignIn = () => {
     dispatch(requestSignIn({ socialId, password }))

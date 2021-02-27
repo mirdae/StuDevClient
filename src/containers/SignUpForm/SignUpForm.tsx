@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './SignUpFormStyle'
 import { Input } from '../../element/Input/index'
@@ -13,7 +13,11 @@ import {
   requestDuplicateNicknameCheck,
 } from '../../modules/user'
 
-function SignUpForm() {
+type SignUpFormProps = {
+  props: any
+}
+
+function SignUpForm({ props }: SignUpFormProps) {
   const dispatch = useDispatch()
   const [socialId, setSocialId] = useState('')
   const [password, setPassword] = useState('')
@@ -33,6 +37,15 @@ function SignUpForm() {
   const { isIdDuplicated, isNicknameDuplicated } = useSelector(
     (state) => state.userDuplicateReducer
   )
+
+  const { isRegistered } = useSelector((state) => state.userReducer)
+
+  useEffect(() => {
+    console.log(isRegistered)
+    if (isRegistered) {
+      props.history.push('/sign-in')
+    }
+  }, [isRegistered])
 
   const debounce = (requestFunc: any) => {
     clearTimeout(CheckRef.current)

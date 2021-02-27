@@ -20,10 +20,17 @@ function* authSaga() {
 
 function* signUpSaga({ payload }: any) {
   try {
-    const data = yield call(API.User.signUp, payload)
+    const { message } = yield call(API.User.signUp, payload)
+
+    if (message === 'success') {
+      yield put({
+        type: AT.REQUEST_SIGN_UP_SUCCESS,
+        payload: true,
+      })
+    }
     yield put({
       type: AT.REQUEST_SIGN_UP_SUCCESS,
-      payload: data,
+      payload: false,
     })
   } catch (error) {
     yield put({
