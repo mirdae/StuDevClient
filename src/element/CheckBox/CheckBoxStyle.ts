@@ -14,18 +14,20 @@ export const Container = styled.div<SelectedType>`
   align-items: center;
   justify-content: center;
   margin: 5px;
-  color: ${PALETTE.MAIN_TEXT};
+  border: 1px solid ${PALETTE.WHITE};
+  color: ${PALETTE.SUB_TEXT};
   cursor: pointer;
   &:hover {
-    background-color: ${PALETTE.POINT};
+    border: 1px solid ${PALETTE.POINT};
   }
 
   ${(props) =>
     props.selected
       ? css`
-          border: 1px solid ${PALETTE.POINT};
+          background-color: ${PALETTE.POINT};
+          color: ${PALETTE.WHITE};
         `
       : css`
-          border: 1px solid ${PALETTE.WHITE};
+          background-color: ${PALETTE.WHITE};
         `}
 `

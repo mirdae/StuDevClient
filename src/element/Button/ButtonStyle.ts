@@ -5,8 +5,8 @@ type ButtonProps = {
   buttonType: 'submit' | 'cancel'
 }
 export const Container = styled.button<ButtonProps>`
-  padding: 0 50px;
-  height: 50px;
+  padding: 0 2rem;
+  height: 3rem;
   border-radius: 50px;
   font-size: 0.8rem;
   margin: 20px 10px;

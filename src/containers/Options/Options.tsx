@@ -81,7 +81,7 @@ function Options({
                 />
               ))
             : topics.map((topic) => (
-                <CheckBox text={topic} key={topic} selected={false} />
+                <CheckBox text={topic} key={topic} selected={true} />
               ))}
         </S.Topic>
       </S.OptionBox>
@@ -123,11 +123,7 @@ function Options({
                 />
               ))
             : onOff.map((type) => (
-                <CheckBox
-                  text={type}
-                  selected={selectedOnOff.includes(type)}
-                  key={type}
-                />
+                <CheckBox text={type} selected={true} key={type} />
               ))}
         </S.OnOff>
       </S.OptionBox>
