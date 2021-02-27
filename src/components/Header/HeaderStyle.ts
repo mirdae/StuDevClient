@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const Logo = styled.h3`
   position: fixed;
   top: 18px;
-  left: 50px;
+  left: 20vw;
   font-size: 24px;
   color: ${PALETTE.POINT};
   font-weight: 600;
@@ -45,9 +45,14 @@ export const Menu = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
-  right: 50px;
+  right: 20vw;
   top: 0;
   font-size: 1rem;
-  width: 5vw;
+  width: 7vw;
+  justify-content: space-between;
   color: ${PALETTE.POINT};
+`
+
+export const UserIcon = styled.div`
+  position: relative;
 `
