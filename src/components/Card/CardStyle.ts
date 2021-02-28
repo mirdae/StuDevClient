@@ -3,7 +3,8 @@ import PALETTE from '../../styles/color-variables'
 import { BOX_STYLE } from '../../styles/common-style'
 
 export const Container = styled.div`
-  width: 300px;
+  width: 20vw;
+  min-width: 200px;
   height: 150px;
   background-color: ${PALETTE.WHITE};
   border-radius: ${BOX_STYLE.RADIUS};
@@ -22,15 +23,19 @@ export const Container = styled.div`
       color: ${PALETTE.POINT};
     }
   }
+
+  @media screen and (max-width: 678px) {
+    min-width: 300px;
+  }
 `
 export const MiniInfo = styled.div`
-  width: 240px;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   position: absolute;
   bottom: 20px;
   left: 50%;
-  margin-left: -120px;
+  margin-left: -40%;
 `
 export const IconBox = styled.div`
   display: flex;

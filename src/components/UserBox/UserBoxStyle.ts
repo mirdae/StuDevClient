@@ -30,9 +30,9 @@ export const List = styled.div`
   display: flex;
   align-items: center;
   z-index: 5;
-  cursor: pointer;
   margin: 20px 0;
   font-size: 15px;
+  cursor: pointer;
   svg {
     margin: 0 20px;
   }
