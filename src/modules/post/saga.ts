@@ -20,16 +20,21 @@ function* createPostSaga({ payload }: CreatePostAction) {
   }
 }
 
-function* getAllPostsSaga({ payload }: PostAction) {
+function* getPostsSaga({ payload }: any) {
   try {
-    const { posts } = yield call(API.Post.getAllPosts)
+    let data = { posts: [] }
+    if (payload) {
+      data = yield call(API.Post.getSpecificPosts, payload)
+    } else {
+      data = yield call(API.Post.getAllPosts)
+    }
     yield put({
-      type: AT.REQUEST_GET_ALL_POSTS_SUCCESS,
-      payload: posts,
+      type: AT.REQUEST_GET_POSTS_SUCCESS,
+      payload: data.posts,
     })
   } catch (error) {
     yield put({
-      type: AT.REQUEST_GET_ALL_POSTS_ERROR,
+      type: AT.REQUEST_GET_POSTS_ERROR,
       payload: error,
       error: true,
     })
@@ -105,7 +110,7 @@ function* createCommentSaga({ payload }: any) {
 
 export function* postSaga() {
   yield takeLatest(AT.REQUEST_CREATE_POST, createPostSaga)
-  yield takeLatest(AT.REQUEST_GET_ALL_POSTS, getAllPostsSaga)
+  yield takeLatest(AT.REQUEST_GET_POSTS, getPostsSaga)
   yield takeLatest(AT.REQUEST_GET_POST_DETAIL, getPostDetailSaga)
   yield takeEvery(AT.REQUEST_PARTICIPATE_APPLY, participateApplySaga)
   yield takeEvery(AT.REQUEST_PARTICIPATE_CANCEL, participateCancelSaga)

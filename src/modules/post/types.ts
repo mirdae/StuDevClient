@@ -9,9 +9,9 @@ export type CreatePostAction =
   | ReturnType<typeof actions.changePostParticipantCountLimit>
 
 export type PostAction =
-  | ReturnType<typeof actions.requestGetAllPosts>
-  | ReturnType<typeof actions.requestGetAllPostsSuccess>
-  | ReturnType<typeof actions.requestGetAllPostsError>
+  | ReturnType<typeof actions.requestGetPosts>
+  | ReturnType<typeof actions.requestGetPostsSuccess>
+  | ReturnType<typeof actions.requestGetPostsError>
 
 export type PostDetailAction =
   | ReturnType<typeof actions.requestGetPostDetail>
@@ -54,7 +54,7 @@ export type PostDetailState = {
   created_at: string
   updated_at?: string
   views: number
-  comment: []
+  comments: CommentState[]
   isCreated?: 'fail' | 'success'
   participant: string[]
 }
@@ -64,7 +64,7 @@ export type PostStateArr = {
 }
 
 export type CommentState = {
-  id?: number
+  id: number
   comment: string
   created_at?: string
   post_id: number

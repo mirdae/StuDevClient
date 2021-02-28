@@ -37,17 +37,17 @@ export const changePostParticipantCountLimit = (postInfo: number) => ({
   payload: postInfo,
 })
 
-//requestGetAllPosts
-export const requestGetAllPosts = () => ({
-  type: AT.REQUEST_GET_ALL_POSTS,
+//requestGetPosts
+export const requestGetPosts = (searchInput?: string) => ({
+  type: AT.REQUEST_GET_POSTS,
+  payload: searchInput,
+})
+export const requestGetPostsSuccess = () => ({
+  type: AT.REQUEST_GET_POSTS_SUCCESS,
   payload: [],
 })
-export const requestGetAllPostsSuccess = () => ({
-  type: AT.REQUEST_GET_ALL_POSTS_SUCCESS,
-  payload: [],
-})
-export const requestGetAllPostsError = () => ({
-  type: AT.REQUEST_GET_ALL_POSTS_ERROR,
+export const requestGetPostsError = () => ({
+  type: AT.REQUEST_GET_POSTS_ERROR,
   payload: [],
 })
 

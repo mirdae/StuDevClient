@@ -65,9 +65,9 @@ export function postReducer(
   action: PostAction
 ): PostStateArr {
   switch (action.type) {
-    case AT.REQUEST_GET_ALL_POSTS_SUCCESS:
+    case AT.REQUEST_GET_POSTS_SUCCESS:
       return { posts: [...action.payload] }
-    case AT.REQUEST_GET_ALL_POSTS_ERROR:
+    case AT.REQUEST_GET_POSTS_ERROR:
       return { ...state }
     default:
       return state
@@ -84,7 +84,7 @@ const initialDetailPostState: any = {
   created_at: '',
   updated_at: '',
   views: 0,
-  comment: [],
+  comments: [],
   participant: [],
 }
 
@@ -118,9 +118,9 @@ export function postDetailReducer(
     case AT.REQUEST_PARTICIPATE_CANCEL_ERROR:
       return { ...state }
     case AT.REQUEST_CREATE_COMMENT_SUCCESS:
-      console.log([...state.comment, action.payload])
       return {
         ...state,
+        comments: [...state.comments, action.payload],
       }
     case AT.REQUEST_CREATE_COMMENT_ERROR:
       return { ...state }
