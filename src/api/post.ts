@@ -23,6 +23,11 @@ const getAllPosts = async () => {
   return data
 }
 
+const getSpecificPosts = async (search: string) => {
+  const { data } = await api.get(`/post?search=${search}`)
+  return data
+}
+
 const createPost = async (postInfo: Post) => {
   const { data } = await api.post('/post', postInfo)
   return data
@@ -56,4 +61,5 @@ export default {
   participateApply,
   participateCancel,
   createComment,
+  getSpecificPosts,
 }
