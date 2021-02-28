@@ -7,11 +7,10 @@ import { requestGetAllPosts } from '../../modules/post'
 import { CardList } from '../../components/CardList'
 
 type MainProps = {
-  isAuth: boolean
   props: any
 }
 
-function Main({ isAuth, props }: MainProps) {
+function Main({ props }: MainProps) {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(requestGetAllPosts())
@@ -19,7 +18,7 @@ function Main({ isAuth, props }: MainProps) {
 
   return (
     <S.Container>
-      <Header isAuth={isAuth} isMain={true} isSignPage={false} />
+      <Header isMain={true} isSignPage={false} />
       <CardList />
     </S.Container>
   )

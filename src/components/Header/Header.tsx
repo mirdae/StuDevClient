@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as S from './HeaderStyle'
 import { UserBox } from '../UserBox'
@@ -8,13 +9,13 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import TuneOutlinedIcon from '@material-ui/icons/TuneOutlined'
 
 type HeaderProps = {
-  isAuth: boolean
   isMain: boolean
   isSignPage: boolean
 }
 
-function Header({ isMain, isAuth, isSignPage }: HeaderProps) {
+function Header({ isMain, isSignPage }: HeaderProps) {
   const [showUserBox, setShowUserBox] = useState<Boolean>(true)
+  const isAuth = !!useSelector((state) => state.userReducer.id)
 
   return (
     <S.Container>

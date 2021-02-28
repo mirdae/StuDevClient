@@ -10,7 +10,7 @@ type SignUpProps = {
 function SignUp({ props }: SignUpProps) {
   return (
     <S.Container>
-      <Header isAuth={false} isMain={false} isSignPage={true} />
+      <Header isMain={false} isSignPage={true} />
       <SignUpForm props={props}></SignUpForm>
     </S.Container>
   )

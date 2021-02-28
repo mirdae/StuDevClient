@@ -18,25 +18,19 @@ export default (
     const user_id = useSelector((state) => state.userReducer.id)
     const [auth, _, __] = useCookies(['auth'])
 
-    let isAuth = false
-    if (!!user_id) {
-      isAuth = true
-    } else if (auth.auth) {
+    if (!user_id && !!auth.auth) {
       dispatch(requestAuth())
-      isAuth = true
-    } else {
-      isAuth = false
     }
 
     useEffect(() => {
       if (option) {
-        !isAuth && props.history.push('/sign-in')
+        !user_id && props.history.push('/sign-in')
       } else if (option === false) {
-        isAuth && props.history.push('/')
+        !!user_id && props.history.push('/')
       }
     }, [])
 
-    return <WrappedComponent isAuth={isAuth} props={props} />
+    return <WrappedComponent props={props} />
   }
 
   return AuthenticateCheck

@@ -12,11 +12,10 @@ import { CommentList } from '../../containers/CommentList'
 import { CreateComment } from '../../components/CreateComment'
 
 type PostProps = {
-  isAuth: boolean
   props: any
 }
 
-function Post({ isAuth, props }: PostProps) {
+function Post({ props }: PostProps) {
   const dispatch = useDispatch()
 
   const {
@@ -35,7 +34,7 @@ function Post({ isAuth, props }: PostProps) {
 
   return (
     <S.Container>
-      <Header isAuth={isAuth} isMain={false} isSignPage={false} />
+      <Header isMain={false} isSignPage={false} />
       <S.ContentBox>
         <S.LeftContent>
           <ViewContent />

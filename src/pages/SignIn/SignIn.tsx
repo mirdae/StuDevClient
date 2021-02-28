@@ -6,14 +6,13 @@ import { SignInForm } from '../../containers/SignInForm'
 import { Header } from '../../components/Header'
 
 type SignInProps = {
-  isAuth: boolean
   props: any
 }
 
-function SignIn({ isAuth, props }: SignInProps) {
+function SignIn({ props }: SignInProps) {
   return (
     <S.Container>
-      <Header isAuth={false} isMain={false} isSignPage={true} />
+      <Header isMain={false} isSignPage={true} />
       <SignInForm props={props}></SignInForm>
     </S.Container>
   )

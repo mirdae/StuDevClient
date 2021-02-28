@@ -18,11 +18,10 @@ const topics = [
 const onOff = ['온라인', '오프라인']
 
 type CreatePostProps = {
-  isAuth: boolean
   props: any
 }
 
-function CreatePost({ isAuth, props }: CreatePostProps) {
+function CreatePost({ props }: CreatePostProps) {
   const isCreated = useSelector((state) => state.createPostReducer.isCreated)
 
   useEffect(() => {
@@ -35,7 +34,7 @@ function CreatePost({ isAuth, props }: CreatePostProps) {
   // 헤더부분 수정해야됨
   return (
     <S.Container>
-      <Header isAuth={true} isMain={false} isSignPage={false} />
+      <Header isMain={false} isSignPage={false} />
       <S.ContentBox>
         <CreateForm />
         <Options topics={topics} onOff={onOff} type="write" />
