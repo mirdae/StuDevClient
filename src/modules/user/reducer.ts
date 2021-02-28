@@ -24,7 +24,6 @@ export function userReducer(
       return { ...state, isRegistered: action.payload }
 
     case AT.REQUEST_SIGN_IN_SUCCESS:
-      console.log(action)
       return {
         ...state,
         id: action.payload.user.id,
@@ -34,7 +33,6 @@ export function userReducer(
     case AT.REQUEST_SIGN_IN_ERROR:
       return { ...state }
     case AT.REQUEST_AUTH_SUCCESS:
-      console.log(action)
       return {
         ...state,
         id: action.payload.user.id,
@@ -42,6 +40,10 @@ export function userReducer(
         nickname: action.payload.user.nickname,
       }
     case AT.REQUEST_AUTH_ERROR:
+      return { ...state }
+    case AT.REQUEST_LOGOUT_SUCCESS:
+      return initialState
+    case AT.REQUEST_LOGOUT_ERROR:
       return { ...state }
     default:
       return { ...state }

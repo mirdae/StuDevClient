@@ -77,12 +77,14 @@ export const requestLogout = () => ({
   type: AT.REQUEST_LOGOUT,
 })
 
-export const requestLogoutSuccess = () => ({
+export const requestLogoutSuccess = (result: any) => ({
   type: AT.REQUEST_LOGOUT_SUCCESS,
+  payload: result,
 })
 
-export const requestLogoutError = () => ({
+export const requestLogoutError = (result: any) => ({
   type: AT.REQUEST_LOGOUT_ERROR,
+  payload: result,
 })
 
 //requestDuplicateIdCheck

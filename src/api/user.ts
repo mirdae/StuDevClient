@@ -32,10 +32,16 @@ const signUp = async (userInfo: User) => {
   return data
 }
 
+const logout = async () => {
+  const { data } = await api.delete('/user')
+  return data
+}
+
 export default {
   auth,
   signUp,
   signIn,
+  logout,
   duplicateIdCheck,
   duplicateNicknameCheck,
 }

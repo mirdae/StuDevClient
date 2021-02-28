@@ -5,10 +5,14 @@ import API from '../../api'
 function* authSaga() {
   try {
     const data = yield call(API.User.auth)
-    yield put({
-      type: AT.REQUEST_AUTH_SUCCESS,
-      payload: data,
-    })
+    if (data.message === 'success') {
+      yield put({
+        type: AT.REQUEST_AUTH_SUCCESS,
+        payload: data,
+      })
+    } else {
+      console.log(data)
+    }
   } catch (error) {
     yield put({
       type: AT.REQUEST_AUTH_ERROR,
@@ -57,6 +61,22 @@ function* signInSaga({ payload }: any) {
   }
 }
 
+function* logoutSaga({ payload }: any) {
+  try {
+    const data = yield call(API.User.logout)
+    yield put({
+      type: AT.REQUEST_LOGOUT_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    yield put({
+      type: AT.REQUEST_LOGOUT_ERROR,
+      payload: error,
+      error: true,
+    })
+  }
+}
+
 function* duplicateIdCheckSaga({ payload }: any) {
   try {
     const data = yield call(API.User.duplicateIdCheck, payload)
@@ -93,6 +113,7 @@ export function* userSaga() {
   yield takeEvery(AT.REQUEST_AUTH, authSaga)
   yield takeLatest(AT.REQUEST_SIGN_UP, signUpSaga)
   yield takeLatest(AT.REQUEST_SIGN_IN, signInSaga)
+  yield takeLatest(AT.REQUEST_LOGOUT, logoutSaga)
   yield takeEvery(AT.REQUEST_DUPLICATE_ID_CHECK, duplicateIdCheckSaga)
   yield takeEvery(
     AT.REQUEST_DUPLICATE_NICKNAME_CHECK,
