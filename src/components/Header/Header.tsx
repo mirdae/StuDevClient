@@ -14,7 +14,7 @@ type HeaderProps = {
 }
 
 function Header({ isMain, isSignPage }: HeaderProps) {
-  const [showUserBox, setShowUserBox] = useState<Boolean>(true)
+  const [showUserBox, setShowUserBox] = useState<Boolean>(false)
   const isAuth = !!useSelector((state) => state.userReducer.id)
 
   return (
@@ -49,4 +49,4 @@ function Header({ isMain, isSignPage }: HeaderProps) {
   )
 }
 
-export default Header
+export default React.memo(Header)

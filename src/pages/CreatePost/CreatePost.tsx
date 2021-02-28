@@ -44,4 +44,4 @@ function CreatePost({ props }: CreatePostProps) {
   )
 }
 
-export default CreatePost
+export default React.memo(CreatePost)

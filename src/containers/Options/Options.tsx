@@ -131,4 +131,4 @@ function Options({
   )
 }
 
-export default Options
+export default React.memo(Options)

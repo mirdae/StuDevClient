@@ -67,4 +67,4 @@ function PostButtonBox({
   )
 }
 
-export default PostButtonBox
+export default React.memo(PostButtonBox)

@@ -192,4 +192,4 @@ function SignUpForm({ props }: SignUpFormProps) {
   )
 }
 
-export default SignUpForm
+export default React.memo(SignUpForm)

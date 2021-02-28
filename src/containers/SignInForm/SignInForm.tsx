@@ -54,4 +54,4 @@ function SignInForm({ props }: SignInFormProps) {
   )
 }
 
-export default SignInForm
+export default React.memo(SignInForm)

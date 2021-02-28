@@ -15,4 +15,4 @@ function CheckBox(props: CheckBoxProps) {
   )
 }
 
-export default CheckBox
+export default React.memo(CheckBox)

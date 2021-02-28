@@ -18,4 +18,4 @@ function SignIn({ props }: SignInProps) {
   )
 }
 
-export default SignIn
+export default React.memo(SignIn)
