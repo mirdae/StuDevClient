@@ -7,26 +7,34 @@ import {
   requestParticipateApply,
   requestParticipateCancel,
 } from '../../modules/post'
-import { Participant } from '../Options/OptionsStyle'
-import { PinDropSharp } from '@material-ui/icons'
 
 type PostButtonBoxProps = {
   isWriter: boolean
   isParticipated: boolean
   postId: number
+  isAuth: boolean
 }
 
 function PostButtonBox({
   isWriter,
   isParticipated,
   postId,
+  isAuth,
 }: PostButtonBoxProps) {
   const dispatch = useDispatch()
 
+  const { participant_count_limit, participant } = useSelector(
+    (state) => state.postDetailReducer
+  )
+
   const handleParticipate = () => {
     // 로그인 안했을때 처리
-
-    dispatch(requestParticipateApply(postId))
+    if (participant_count_limit <= participant.length) {
+      return
+    }
+    if (isAuth) {
+      dispatch(requestParticipateApply(postId))
+    }
   }
 
   const handleCancelParticipate = () => {

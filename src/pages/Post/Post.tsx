@@ -53,6 +53,7 @@ function Post({ props }: PostProps) {
             isWriter={post_user_id === user_id}
             isParticipated={participant.includes(user_id.toString())}
             postId={props.match.params.id}
+            isAuth={!!user_id}
           />
         </S.RightMenu>
       </S.ContentBox>
