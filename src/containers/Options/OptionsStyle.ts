@@ -17,6 +17,7 @@ export const OptionBox = styled.div`
   display: flex;
   justify-content: space-between;
 `
+
 export const Icon = styled.div`
   font-size: 9px;
   width: 30%;

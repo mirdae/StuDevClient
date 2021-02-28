@@ -12,13 +12,15 @@ export const Container = styled.div`
   border-radius: ${BOX_STYLE.RADIUS};
   box-shadow: ${BOX_STYLE.SHADOW};
 `
+
 export const ButtonBox = styled.div`
   width: 30%;
   display: flex;
   align-items: flex-end;
 `
+
 export const Comment = styled.textarea`
-  background-color: ${PALETTE.INPUT_BORDER};
+  background-color: #f1f2f2;
   resize: vertical;
   padding: 20px;
 `

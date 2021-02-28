@@ -3,7 +3,7 @@ import * as S from './MainStyle'
 import { useDispatch } from 'react-redux'
 import { Header } from '../../components/Header'
 import { useCookies } from 'react-cookie'
-import { requestGetAllPosts } from '../../modules/post'
+import { requestGetPosts } from '../../modules/post'
 import { CardList } from '../../components/CardList'
 
 type MainProps = {
@@ -13,7 +13,7 @@ type MainProps = {
 function Main({ props }: MainProps) {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(requestGetAllPosts())
+    dispatch(requestGetPosts())
   }, [])
 
   return (

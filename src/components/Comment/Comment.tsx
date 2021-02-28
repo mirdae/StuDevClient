@@ -15,7 +15,7 @@ function Comment({
   id,
   comment,
   user_id,
-  create_at,
+  created_at,
   updated_at,
   nickname,
 }: CommentProps) {
@@ -26,7 +26,7 @@ function Comment({
         <h3>{nickname}</h3>
         <S.Time>
           <CreateOutlinedIcon style={{ fontSize: 15 }} />
-          <span>{create_at}</span>
+          <span>{created_at}</span>
         </S.Time>
       </S.Info>
       <S.Content>{comment}</S.Content>

@@ -11,6 +11,7 @@ type CreateCommentProps = {
 function CreateComment({ postId }: CreateCommentProps) {
   const dispatch = useDispatch()
   const commentRef = useRef<HTMLTextAreaElement>(null)
+
   const handleSubmit = () => {
     if (commentRef.current.value === '') {
       // 댓글 입력하라는 알림창뜨게해야됨
@@ -21,7 +22,9 @@ function CreateComment({ postId }: CreateCommentProps) {
       comment: commentRef.current.value,
     }
     dispatch(requestCreateComment(commentInfo))
+    commentRef.current.value = null
   }
+
   return (
     <S.Container>
       <S.Comment placeholder="댓글을 입력하세요" ref={commentRef}></S.Comment>
