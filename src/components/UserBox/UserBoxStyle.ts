@@ -11,7 +11,7 @@ export const Container = styled.div`
   right: -25px;
   border-radius: ${BOX_STYLE.RADIUS};
   box-shadow: ${BOX_STYLE.SHADOW};
-  z-index: 2;
+  z-index: 999 !important;
 `
 export const Anchor = styled.div`
   width: 30px;

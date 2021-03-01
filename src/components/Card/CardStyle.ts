@@ -13,6 +13,7 @@ export const Container = styled.div`
   position: relative;
   margin: 20px auto;
   transition: color 0.5s ease-in-out;
+  z-index: -1;
   cursor: pointer;
   h2 {
     font-size: 1rem;
