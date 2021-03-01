@@ -7,6 +7,7 @@ import { Button } from '../../element/Button'
 import { Link } from 'react-router-dom'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import { RootState } from '../../modules'
 
 type SignInFormProps = {
   props: any
@@ -16,7 +17,7 @@ function SignInForm({ props }: SignInFormProps) {
   const [socialId, setSocialId] = useState('')
   const [password, setPassword] = useState('')
 
-  const { id } = useSelector((state) => state.userReducer)
+  const { id } = useSelector((state: RootState) => state.userReducer)
 
   useEffect(() => {
     if (id > 0) {

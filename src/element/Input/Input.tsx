@@ -11,17 +11,25 @@ type InputProps = {
   alert?: string | undefined
 }
 
-function Input(props: InputProps) {
+function Input({
+  placeHolder,
+  children,
+  handleChange,
+  value,
+  type,
+  notice,
+  alert,
+}: InputProps) {
   return (
-    <S.Container notice={props.notice}>
-      <S.Icon>{props.children}</S.Icon>
+    <S.Container notice={notice}>
+      <S.Icon>{children}</S.Icon>
       <S.Input
-        placeholder={props.placeHolder}
-        value={props.value}
-        onChange={props.handleChange}
-        type={props.type}
+        placeholder={placeHolder}
+        value={value}
+        onChange={handleChange}
+        type={type}
       />
-      <S.Alert>{props.alert}</S.Alert>
+      <S.Alert>{alert}</S.Alert>
     </S.Container>
   )
 }

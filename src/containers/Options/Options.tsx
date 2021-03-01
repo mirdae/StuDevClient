@@ -1,4 +1,4 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './OptionsStyle'
 import { CheckBox } from '../../element/CheckBox'

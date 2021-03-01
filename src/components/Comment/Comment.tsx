@@ -6,7 +6,7 @@ type CommentProps = {
   id: string
   comment: string
   user_id: number
-  create_at: string
+  created_at: string
   updated_at?: string
   nickname: string
 }

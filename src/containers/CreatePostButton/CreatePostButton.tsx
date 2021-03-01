@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import * as S from './CreatePostButtonStyle'
 import { Button } from '../../element/Button'
 import { requestCreatePost } from '../../modules/post'
+import { RootState } from '../../modules'
 
 function CreatePostButton() {
   const dispatch = useDispatch()
-  const postInfo = useSelector((state) => state.createPostReducer)
+  const postInfo = useSelector((state: RootState) => state.createPostReducer)
 
   const handleCreatePost = () => {
     dispatch(requestCreatePost(postInfo))

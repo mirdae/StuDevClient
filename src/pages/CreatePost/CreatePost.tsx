@@ -6,6 +6,7 @@ import { Header } from '../../components/Header'
 import { CreateForm } from '../../containers/CreateForm'
 import { Options } from '../../containers/Options'
 import { CreatePostButton } from '../../containers/CreatePostButton'
+import { RootState } from '../../modules'
 
 const topics = [
   '백엔드',
@@ -22,10 +23,11 @@ type CreatePostProps = {
 }
 
 function CreatePost({ props }: CreatePostProps) {
-  const isCreated = useSelector((state) => state.createPostReducer.isCreated)
+  const isCreated = useSelector(
+    (state: RootState) => state.createPostReducer.isCreated
+  )
 
   useEffect(() => {
-    // 이부분 개선이 필요함 isCreated를 true로 변경해야함(isCreated를 false로 변경하는 액션 만들기)
     if (isCreated === 'success') {
       props.history.push('/')
     }

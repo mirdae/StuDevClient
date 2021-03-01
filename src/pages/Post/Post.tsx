@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { useCookies } from 'react-cookie'
 import * as S from './PostStyle'
 import { Header } from '../../components/Header'
 import { ViewContent } from '../../containers/ViewContent'
@@ -10,6 +8,7 @@ import { PostButtonBox } from '../../containers/PostButtonBox'
 import { requestGetPostDetail } from '../../modules/post'
 import { CommentList } from '../../containers/CommentList'
 import { CreateComment } from '../../components/CreateComment'
+import { RootState } from '../../modules'
 
 type PostProps = {
   props: any
@@ -26,8 +25,8 @@ function Post({ props }: PostProps) {
     participant,
     user_id: post_user_id,
     id: post_id,
-  } = useSelector((state) => state.postDetailReducer)
-  const user_id = useSelector((state) => state.userReducer.id)
+  } = useSelector((state: RootState) => state.postDetailReducer)
+  const user_id = useSelector((state: RootState) => state.userReducer.id)
 
   useEffect(() => {
     dispatch(requestGetPostDetail(props.match.params.id))

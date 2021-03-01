@@ -12,6 +12,7 @@ import {
   requestDuplicateIdCheck,
   requestDuplicateNicknameCheck,
 } from '../../modules/user'
+import { RootState } from '../../modules'
 
 type SignUpFormProps = {
   props: any
@@ -35,10 +36,10 @@ function SignUpForm({ props }: SignUpFormProps) {
   >('none')
 
   const { isIdDuplicated, isNicknameDuplicated } = useSelector(
-    (state) => state.userDuplicateReducer
+    (state: RootState) => state.userDuplicateReducer
   )
 
-  const { isRegistered } = useSelector((state) => state.userReducer)
+  const { isRegistered } = useSelector((state: RootState) => state.userReducer)
 
   useEffect(() => {
     console.log(isRegistered)

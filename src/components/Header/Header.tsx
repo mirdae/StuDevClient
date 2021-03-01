@@ -8,6 +8,7 @@ import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOut
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import TuneOutlinedIcon from '@material-ui/icons/TuneOutlined'
 import { requestGetPosts } from '../../modules/post'
+import { RootState } from '../../modules'
 
 type HeaderProps = {
   isMain: boolean
@@ -18,7 +19,7 @@ function Header({ isMain, isSignPage }: HeaderProps) {
   const dispatch = useDispatch()
   const [showUserBox, setShowUserBox] = useState<Boolean>(false)
   const [searchInput, setSearchInput] = useState('')
-  const isAuth = !!useSelector((state) => state.userReducer.id)
+  const isAuth = !!useSelector((state: RootState) => state.userReducer.id)
 
   const searchRef = useRef()
 

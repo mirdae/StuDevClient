@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import * as S from './PostButtonBoxStyle'
 import { Button } from '../../element/Button'
 import {
   requestParticipateApply,
   requestParticipateCancel,
 } from '../../modules/post'
+import { RootState } from '../../modules'
 
 type PostButtonBoxProps = {
   isWriter: boolean
@@ -24,7 +24,7 @@ function PostButtonBox({
   const dispatch = useDispatch()
 
   const { participant_count_limit, participant } = useSelector(
-    (state) => state.postDetailReducer
+    (state: RootState) => state.postDetailReducer
   )
 
   const handleParticipate = () => {

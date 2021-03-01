@@ -7,10 +7,10 @@ type ButtonProps = {
   buttonType: 'submit' | 'cancel'
 }
 
-function Button(props: ButtonProps) {
+function Button({ text, handleClick, buttonType }: ButtonProps) {
   return (
-    <S.Container onClick={props.handleClick} buttonType={props.buttonType}>
-      {props.text}
+    <S.Container onClick={handleClick} buttonType={buttonType}>
+      {text}
     </S.Container>
   )
 }

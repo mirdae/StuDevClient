@@ -7,10 +7,10 @@ type CheckBoxProps = {
   handleClick?: any
 }
 
-function CheckBox(props: CheckBoxProps) {
+function CheckBox({ text, selected, handleClick }: CheckBoxProps) {
   return (
-    <S.Container onClick={props.handleClick} selected={!!props.selected}>
-      {props.text}
+    <S.Container onClick={handleClick} selected={!!selected}>
+      {text}
     </S.Container>
   )
 }
