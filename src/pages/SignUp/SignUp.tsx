@@ -16,4 +16,4 @@ function SignUp({ props }: SignUpProps) {
   )
 }
 
-export default React.memo(SignUp)
+export default SignUp

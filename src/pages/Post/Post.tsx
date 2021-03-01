@@ -28,6 +28,7 @@ function Post({ props }: PostProps) {
     id: post_id,
   } = useSelector((state) => state.postDetailReducer)
   const user_id = useSelector((state) => state.userReducer.id)
+
   useEffect(() => {
     dispatch(requestGetPostDetail(props.match.params.id))
   }, [])
@@ -61,4 +62,4 @@ function Post({ props }: PostProps) {
   )
 }
 
-export default React.memo(Post)
+export default Post
