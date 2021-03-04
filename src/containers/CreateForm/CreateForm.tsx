@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { CreateForm } from '../../components/CreateForm'
 import { changePostContent, changePostTitle } from '../../modules/post'

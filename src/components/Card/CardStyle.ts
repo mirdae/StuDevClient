@@ -3,7 +3,7 @@ import PALETTE from '../../styles/color-variables'
 import { BOX_STYLE } from '../../styles/common-style'
 
 export const Container = styled.div`
-  width: 20vw;
+  width: 18vw;
   min-width: 200px;
   height: 150px;
   background-color: ${PALETTE.WHITE};
