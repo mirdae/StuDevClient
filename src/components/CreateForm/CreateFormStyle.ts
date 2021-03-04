@@ -16,9 +16,9 @@ export const TitleInput = styled.input`
   background-color: ${PALETTE.WHITE};
   padding: 12px 20px;
   font-size: 0.8rem;
-  color: ${PALETTE.INPUT_TEXT};
+  color: ${PALETTE.MAIN_TEXT};
   &::placeholder {
-    color: ${PALETTE.INPUT_TEXT};
+    color: ${PALETTE.MAIN_TEXT};
   }
 `
 export const ContentInput = styled.textarea`
@@ -29,9 +29,9 @@ export const ContentInput = styled.textarea`
   background-color: ${PALETTE.WHITE};
   padding: 20px;
   font-size: 0.7rem;
-  color: ${PALETTE.INPUT_TEXT};
+  color: ${PALETTE.SUB_TEXT};
   resize: none;
   &::placeholder {
-    color: ${PALETTE.INPUT_TEXT};
+    color: ${PALETTE.SUB_TEXT};
   }
 `
