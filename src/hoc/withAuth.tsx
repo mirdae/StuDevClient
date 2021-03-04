@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux'
 import { useCookies } from 'react-cookie'
 import { requestAuth } from '../modules/user'
 
-export default (
+function withAuth(
   WrappedComponent: (props: any) => JSX.Element,
   option: boolean | null
-) => {
+) {
   // option
   // true > 로그인 된 상태에서 접근가능
   // false> 로그인 안 된 상태에서만 접근가능
@@ -35,3 +35,5 @@ export default (
 
   return AuthenticateCheck
 }
+
+export default withAuth
