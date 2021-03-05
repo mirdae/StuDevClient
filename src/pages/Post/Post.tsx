@@ -9,6 +9,7 @@ import { requestGetPostDetail } from '../../modules/post'
 import { CommentList } from '../../containers/CommentList'
 import { CreateComment } from '../../components/CreateComment'
 import { RootState } from '../../modules'
+import { Alert } from '../../element/Alert'
 
 type PostProps = {
   props: any
@@ -57,6 +58,7 @@ function Post({ props }: PostProps) {
           />
         </S.RightMenu>
       </S.ContentBox>
+      <Alert />
     </S.Container>
   )
 }
