@@ -8,12 +8,15 @@ import {
   postSaga,
 } from './post'
 
+import { alertReducer } from './alert'
+
 const rootReducer = combineReducers({
   userReducer,
   postReducer,
   createPostReducer,
   postDetailReducer,
   userDuplicateReducer,
+  alertReducer,
 })
 
 export function* rootSaga() {
